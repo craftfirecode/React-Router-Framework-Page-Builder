@@ -39,6 +39,7 @@ export function Layout({children}: { children: React.ReactNode }) {
     const menuItem = loaderData.top;
 
     const isActive = (path: string): boolean => {
+        console.log(path)
         return location.pathname.startsWith('/' + path);
     }
     return (
@@ -70,9 +71,7 @@ export function Layout({children}: { children: React.ReactNode }) {
                     ) : (
                         <Menu.Root openOnHover>
                             <Menu.Trigger
-                                className={`flex h-10 items-center justify-center gap-1.5 rounded-md px-3.5 select-none focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100 data-[popup-open]:bg-gray-100 ${
-                                    isActive(item.to) ? "text-[#00c16a] bg-[#f1f5f9]" : "text-[#62748e] hover:text-black"
-                                }`}
+                                className={"flex h-10 items-center justify-center gap-1.5 rounded-md px-3.5 select-none focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100 data-[popup-open]:bg-gray-100"}
                             >
                                 <DynamicIcon iconName={item.icon}/>
                                 {item.label}
@@ -89,7 +88,11 @@ export function Layout({children}: { children: React.ReactNode }) {
                                             <ArrowSvg/>
                                         </Menu.Arrow>
                                         {item.children.map((child: any, index: string | number) => (
-                                            <Link className="app-nav-link" to={child.to}>
+                                            <NavLink className={({isActive}) =>
+                                                isActive
+                                                    ? "app-nav-link text-[#00c16a] bg-[#f1f5f9]"
+                                                    : "app-nav-link text-[#62748e] hover:text-black"
+                                            } to={child.to}>
                                                 <Menu.Item
                                                     key={index}
                                                     className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900"
@@ -97,7 +100,7 @@ export function Layout({children}: { children: React.ReactNode }) {
                                                     <DynamicIcon iconName={child.icon}/>
                                                     {child.label}
                                                 </Menu.Item>
-                                            </Link>
+                                            </NavLink>
                                         ))}
                                     </Menu.Popup>
                                 </Menu.Positioner>
