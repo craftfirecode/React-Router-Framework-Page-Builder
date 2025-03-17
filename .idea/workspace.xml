@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3655c1cf-8e41-4830-8663-6c0fdefc6f4e" name="Changes" comment="add initial project files including configuration, routing, and styling setup">
+      <change afterPath="$PROJECT_DIR$/ssr/app/api/strapi-api.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssr/app/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/ssr/app/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssr/app/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ssr/app/root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssr/app/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssr/app/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssr/app/routes/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ssr/app/routes/_index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssr/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ssr/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssr/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ssr/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;craftfirecode&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/craftfirecode/nuxt-page-builder.git&quot;,
+    &quot;accountId&quot;: &quot;28d4bc80-d71c-4f0d-980a-1e7a4031c8c1&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2uH6uUQOtBNBVeWgHRSZ81MdfAq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/vhost/nuxt-page-builder&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.deploy.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev (1).executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.develop.executor&quot;: &quot;Run&quot;,
+    &quot;npm.preview.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\vhost\\nuxt-page-builder\\backend\\strapi\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="npm.develop">
+    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/backend/strapi/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/ssr/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="develop" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/backend/strapi/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="develop" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="preview" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="preview" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev (1)" />
+        <item itemvalue="npm.develop" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.preview" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-WS-243.24978.60" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3655c1cf-8e41-4830-8663-6c0fdefc6f4e" name="Changes" comment="" />
+      <created>1741893375518</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741893375518</updated>
+      <workItem from="1741893377356" duration="1022000" />
+      <workItem from="1742147756723" duration="13000" />
+      <workItem from="1742147778286" duration="12000" />
+      <workItem from="1742203586871" duration="1929000" />
+      <workItem from="1742205642030" duration="6164000" />
+      <workItem from="1742212088105" duration="186000" />
+      <workItem from="1742217835644" duration="200000" />
+      <workItem from="1742218540211" duration="2265000" />
+    </task>
+    <task id="LOCAL-00001" summary="init">
+      <option name="closed" value="true" />
+      <created>1742206337339</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742206337339</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add AppHeader component and integrate it into app.vue">
+      <option name="closed" value="true" />
+      <created>1742206675076</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1742206675076</updated>
+    </task>
+    <task id="LOCAL-00003" summary="initialize project structure with essential configuration files">
+      <option name="closed" value="true" />
+      <created>1742207101796</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1742207101796</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update API URLs to use localhost for development and refactor AppHeader to fetch settings data">
+      <option name="closed" value="true" />
+      <created>1742210160952</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1742210160952</updated>
+    </task>
+    <task id="LOCAL-00005" summary="enhance AppHeader and demo components with improved styling and conditional rendering for settings data">
+      <option name="closed" value="true" />
+      <created>1742210638314</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1742210638314</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add initial project files including configuration, routing, and styling setup">
+      <option name="closed" value="true" />
+      <created>1742212209973</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1742212209973</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="init" />
+    <MESSAGE value="add AppHeader component and integrate it into app.vue" />
+    <MESSAGE value="initialize project structure with essential configuration files" />
+    <MESSAGE value="update API URLs to use localhost for development and refactor AppHeader to fetch settings data" />
+    <MESSAGE value="enhance AppHeader and demo components with improved styling and conditional rendering for settings data" />
+    <MESSAGE value="add initial project files including configuration, routing, and styling setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="add initial project files including configuration, routing, and styling setup" />
+  </component>
+</project>
