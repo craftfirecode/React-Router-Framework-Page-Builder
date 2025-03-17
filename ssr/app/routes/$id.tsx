@@ -18,7 +18,7 @@ export async function loader({params}: Route.LoaderArgs) {
 
 export default function PageIndex({loaderData}: Route.ComponentProps) {
     return (
-        <div>
+        <div className="container mx-auto mt-5">
             <h1>PAGE: {loaderData[0].title}</h1>
         </div>
     );

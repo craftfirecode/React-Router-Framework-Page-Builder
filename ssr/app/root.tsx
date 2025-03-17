@@ -50,7 +50,7 @@ export function Layout({children}: { children: React.ReactNode }) {
             <Links/>
         </head>
         <body>
-        <nav className="container mx-auto flex items-center gap-2">
+        <nav className="container mx-auto flex items-center gap-2 mt-5">
             {menuItem.map((item: any) => (
                 <React.Fragment key={item.id}>
                     {item.children.length === 0 ? (
