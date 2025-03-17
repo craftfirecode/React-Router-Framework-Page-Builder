@@ -14,7 +14,8 @@ import {getSettingsData} from "~/api/strapi-api";
 import React from "react";
 import {Menu} from "@base-ui-components/react";
 import * as Icons from "lucide-react";
-import {PinIcon} from "lucide-react";
+import {useLocation} from "react-router";
+
 
 export async function loader() {
     try {
@@ -31,10 +32,15 @@ function DynamicIcon({iconName}: { iconName: string }) {
     return IconComponent ? <IconComponent/> : null;
 }
 
+
 export function Layout({children}: { children: React.ReactNode }) {
-    const loaderData: any = useLoaderData<Route.ComponentProps>(); // Use the hook to access loaderData
+    const location = useLocation();
+    const loaderData: any = useLoaderData<Route.ComponentProps>();
     const menuItem = loaderData.top;
-    console.log(menuItem);
+
+    const isActive = (path: string): boolean => {
+        return location.pathname.startsWith('/' + path);
+    }
     return (
         <html lang="en">
         <head>
@@ -48,9 +54,14 @@ export function Layout({children}: { children: React.ReactNode }) {
             {menuItem.map((item: any) => (
                 <React.Fragment key={item.id}>
                     {item.children.length === 0 ? (
-                        <NavLink className={({isActive}) =>
-                            isActive ? "text-[#00c16a] bg-[#f1f5f9] rounded-md py-2 px-3" : "text-[#62748e] py-2 px-3 transition-colors duration-450 hover:text-black"
-                        } to={item.to}>
+                        <NavLink
+                            className={({isActive}) =>
+                                isActive
+                                    ? "text-[#00c16a] bg-[#f1f5f9] rounded-md py-2 px-3"
+                                    : "text-[#62748e] py-2 px-3 transition-colors duration-450 hover:text-black"
+                            }
+                            to={item.to}
+                        >
                             <div className="flex items-center gap-1.5">
                                 <DynamicIcon iconName={item.icon}/>
                                 {item.label}
@@ -59,7 +70,10 @@ export function Layout({children}: { children: React.ReactNode }) {
                     ) : (
                         <Menu.Root openOnHover>
                             <Menu.Trigger
-                                className="flex h-10 items-center justify-center gap-1.5 rounded-md px-3.5 text-[#62748e] select-none hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100 data-[popup-open]:bg-gray-100">
+                                className={`flex h-10 items-center justify-center gap-1.5 rounded-md px-3.5 select-none focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100 data-[popup-open]:bg-gray-100 ${
+                                    isActive(item.to) ? "text-[#00c16a] bg-[#f1f5f9]" : "text-[#62748e] hover:text-black"
+                                }`}
+                            >
                                 <DynamicIcon iconName={item.icon}/>
                                 {item.label}
                                 <ChevronDownIcon className="-mr-1"/>
@@ -67,15 +81,19 @@ export function Layout({children}: { children: React.ReactNode }) {
                             <Menu.Portal>
                                 <Menu.Positioner className="outline-none" sideOffset={8}>
                                     <Menu.Popup
-                                        className="origin-[var(--transform-origin)] rounded-md bg-[canvas] py-1 text-gray-900 shadow-lg shadow-gray-200 outline outline-1 outline-gray-200 transition-[transform,scale,opacity] data-[ending-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:scale-90 data-[starting-style]:opacity-0 dark:shadow-none dark:-outline-offset-1 dark:outline-gray-300">
+                                        className="origin-[var(--transform-origin)] rounded-md bg-[canvas] py-1 text-gray-900 shadow-lg shadow-gray-200 outline outline-1 outline-gray-200 transition-[transform,scale,opacity] data-[ending-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:scale-90 data-[starting-style]:opacity-0 dark:shadow-none dark:-outline-offset-1 dark:outline-gray-300"
+                                    >
                                         <Menu.Arrow
-                                            className="data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90 data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180">
+                                            className="data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90 data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180"
+                                        >
                                             <ArrowSvg/>
                                         </Menu.Arrow>
                                         {item.children.map((child: any, index: string | number) => (
                                             <Link className="app-nav-link" to={child.to}>
-                                                <Menu.Item key={index}
-                                                           className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
+                                                <Menu.Item
+                                                    key={index}
+                                                    className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900"
+                                                >
                                                     <DynamicIcon iconName={child.icon}/>
                                                     {child.label}
                                                 </Menu.Item>
