@@ -41,8 +41,8 @@ export async function getPageData(urlFilter: string) {
 }
 
 
-export async function getPostData(permalink: string) {
-    return fetchData(`/api/posts?filters[url][$eq]=${permalink}&customPopulate=nested&locale=${process.env.NEXT_PUBLIC_STRAPI_LANG}`);
+export async function getPostData(urlFilter: string) {
+    return fetchData(`/api/posts?filters[url][$eq]=${urlFilter}&customPopulate=nested`);
 }
 
 export async function getSettingsData() {

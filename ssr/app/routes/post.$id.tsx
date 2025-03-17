@@ -1,5 +1,5 @@
-import {getPageData} from "~/api/strapi-api";
-import type {Route} from "./+types/$id";
+import {getPostData} from "~/api/strapi-api";
+import type {Route} from "./+types/post.$id";
 import {Content} from "~/components/ui/content";
 
 export function meta({params}: Route.MetaArgs) {
@@ -11,14 +11,13 @@ export function meta({params}: Route.MetaArgs) {
 
 export async function loader({params}: Route.LoaderArgs) {
     try {
-        return await getPageData(params.id);
+        return await getPostData(params.id);
     } catch (error) {
         return {data: null};
     }
 }
 
-export default function PageIndex({loaderData}: Route.ComponentProps) {
-    console.log(loaderData[0].zone[0].wysiwyg);
+export default function PostIndex({loaderData}: Route.ComponentProps) {
     return (
         <div className="container mx-auto mt-5">
             <h1>PAGE: {loaderData[0].title}</h1>
