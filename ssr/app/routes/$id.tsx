@@ -1,5 +1,6 @@
 import {getPageData} from "~/api/strapi-api";
 import type {Route} from "./+types/$id";
+import {Content} from "~/components/ui/content";
 
 export function meta({params}: Route.MetaArgs) {
     return [
@@ -21,7 +22,7 @@ export default function PageIndex({loaderData}: Route.ComponentProps) {
     return (
         <div className="container mx-auto mt-5">
             <h1>PAGE: {loaderData[0].title}</h1>
-            <div dangerouslySetInnerHTML={{__html: loaderData[0].zone[0].wysiwyg}}/>
+            <Content data={loaderData[0].zone[0].wysiwyg}/>
         </div>
     );
 }
