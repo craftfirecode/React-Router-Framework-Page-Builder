@@ -1,11 +1,18 @@
-import {isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData,} from "react-router";
-
+import {
+    isRouteErrorResponse,
+    Link,
+    Links,
+    Meta,
+    Outlet,
+    Scripts,
+    ScrollRestoration,
+    useLoaderData,
+} from "react-router";
 import type {Route} from "./+types/root";
 import "./app.css";
 import {getSettingsData} from "~/api/strapi-api";
 import React from "react";
 import {Menu} from "@base-ui-components/react";
-import {AtomIcon} from "lucide-react";
 
 export async function loader() {
     try {
@@ -18,8 +25,8 @@ export async function loader() {
 
 export function Layout({children}: { children: React.ReactNode }) {
     const loaderData: any = useLoaderData<Route.ComponentProps>(); // Use the hook to access loaderData
-    const menuItem = loaderData.top
-
+    const menuItem = loaderData.top;
+    console.log(menuItem);
     return (
         <html lang="en">
         <head>
@@ -29,32 +36,41 @@ export function Layout({children}: { children: React.ReactNode }) {
             <Links/>
         </head>
         <body>
-        <div className="container mx-auto flex gap-5">
+        <div className="container mx-auto flex items-center font-medium gap-5">
             {menuItem.map((item: any) => (
-                <Menu.Root key={item.id} openOnHover>
-                    <Menu.Trigger
-                        className="flex h-10 items-center justify-center gap-1.5 rounded-md px-3.5 text-base font-medium text-gray-900 select-none hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100 data-[popup-open]:bg-gray-100">
-                        {item.label}
-                        <ChevronDownIcon className="-mr-1"/>
-                    </Menu.Trigger>
-                    <Menu.Portal>
-                        <Menu.Positioner className="outline-none" sideOffset={8}>
-                            <Menu.Popup
-                                className="origin-[var(--transform-origin)] rounded-md bg-[canvas] py-1 text-gray-900 shadow-lg shadow-gray-200 outline outline-1 outline-gray-200 transition-[transform,scale,opacity] data-[ending-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:scale-90 data-[starting-style]:opacity-0 dark:shadow-none dark:-outline-offset-1 dark:outline-gray-300">
-                                <Menu.Arrow
-                                    className="data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90 data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180">
-                                    <ArrowSvg/>
-                                </Menu.Arrow>
-                                {item.children.map((child: any, index: string | number) => (
-                                    <Menu.Item key={index}
-                                               className="flex cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
-                                        {child.label}
-                                    </Menu.Item>
-                                ))}
-                            </Menu.Popup>
-                        </Menu.Positioner>
-                    </Menu.Portal>
-                </Menu.Root>
+                <React.Fragment key={item.id}>
+                    {item.children.length === 0 ? (
+                        <Link to={item.to}>{item.label}DEMO</Link>
+                    ) : (
+                        <Menu.Root openOnHover>
+                            <Menu.Trigger
+                                className="flex h-10 items-center justify-center gap-1.5 rounded-md px-3.5 text-base font-medium text-gray-900 select-none hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100 data-[popup-open]:bg-gray-100">
+                                {item.label}
+                                <ChevronDownIcon className="-mr-1"/>
+                            </Menu.Trigger>
+                            <Menu.Portal>
+                                <Menu.Positioner className="outline-none" sideOffset={8}>
+                                    <Menu.Popup
+                                        className="origin-[var(--transform-origin)] rounded-md bg-[canvas] py-1 text-gray-900 shadow-lg shadow-gray-200 outline outline-1 outline-gray-200 transition-[transform,scale,opacity] data-[ending-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:scale-90 data-[starting-style]:opacity-0 dark:shadow-none dark:-outline-offset-1 dark:outline-gray-300">
+                                        <Menu.Arrow
+                                            className="data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90 data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180">
+                                            <ArrowSvg/>
+                                        </Menu.Arrow>
+                                        {item.children.map((child: any, index: string | number) => (
+                                            <Link to={child.to}>
+                                                <Menu.Item key={index}
+                                                           className="flex cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
+                                                    {child.label}
+                                                </Menu.Item>
+                                            </Link>
+
+                                        ))}
+                                    </Menu.Popup>
+                                </Menu.Positioner>
+                            </Menu.Portal>
+                        </Menu.Root>
+                    )}
+                </React.Fragment>
             ))}
         </div>
         {children}
@@ -97,7 +113,6 @@ export function ErrorBoundary({error}: Route.ErrorBoundaryProps) {
         </main>
     );
 }
-
 
 function ArrowSvg(props: React.ComponentProps<'svg'>) {
     return (
