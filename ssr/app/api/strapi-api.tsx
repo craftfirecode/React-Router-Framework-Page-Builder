@@ -36,8 +36,8 @@ async function fetchData(url: string, params?: any) {
     }
 }
 
-export async function getPageData(id: string | number) {
-    return fetchData(`/api/pages?filters[documentId][$eq]=${id}&customPopulate=nested&locale=${process.env.NEXT_PUBLIC_STRAPI_LANG}`);
+export async function getPageData(urlFilter: string) {
+    return fetchData(`/api/pages?filters[url][$eq]=${urlFilter}&customPopulate=nested`);
 }
 
 

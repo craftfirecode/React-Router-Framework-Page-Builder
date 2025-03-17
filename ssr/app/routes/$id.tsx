@@ -1,6 +1,5 @@
-import {ApiPlaceholder} from "~/api/strapi-api";
+import {getPageData} from "~/api/strapi-api";
 import type {Route} from "./+types/$id";
-import {useLocation, useParams} from "react-router";
 
 export function meta({params}: Route.MetaArgs) {
     return [
@@ -11,24 +10,16 @@ export function meta({params}: Route.MetaArgs) {
 
 export async function loader({params}: Route.LoaderArgs) {
     try {
-        return await ApiPlaceholder();
+        return await getPageData(params.id);
     } catch (error) {
-        console.error(error);
         return {data: null};
     }
 }
 
-export default function BlogIndex({loaderData}: Route.ComponentProps) {
-    const data = loaderData;
-    const location = useLocation();
-    console.log(data);
-    const {id} = useParams();
+export default function PageIndex({loaderData}: Route.ComponentProps) {
     return (
         <div>
-            <h1>PAGE: {location.state}</h1>
-            <h1>PAGE: {data.title}</h1>
-            <h1>ID: {data.id}</h1>
-            useParams: {id}
+            <h1>PAGE: {loaderData[0].title}</h1>
         </div>
     );
 }

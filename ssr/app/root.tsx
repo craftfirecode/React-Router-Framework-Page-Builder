@@ -39,7 +39,6 @@ export function Layout({children}: { children: React.ReactNode }) {
     const menuItem = loaderData.top;
 
     const isActive = (path: string): boolean => {
-        console.log(path)
         return location.pathname.startsWith('/' + path);
     }
     return (
