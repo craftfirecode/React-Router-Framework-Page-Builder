@@ -13,6 +13,8 @@ import "./app.css";
 import {getSettingsData} from "~/api/strapi-api";
 import React from "react";
 import {Menu} from "@base-ui-components/react";
+import * as Icons from "lucide-react";
+import {PinIcon} from "lucide-react";
 
 export async function loader() {
     try {
@@ -21,6 +23,11 @@ export async function loader() {
         console.error(error);
         return {data: null};
     }
+}
+
+function DynamicIcon({iconName}: { iconName: string }) {
+    const IconComponent = Icons[iconName];
+    return IconComponent ? <IconComponent/> : null;
 }
 
 export function Layout({children}: { children: React.ReactNode }) {
@@ -40,11 +47,17 @@ export function Layout({children}: { children: React.ReactNode }) {
             {menuItem.map((item: any) => (
                 <React.Fragment key={item.id}>
                     {item.children.length === 0 ? (
-                        <Link to={item.to}>{item.label}DEMO</Link>
+                        <Link to={item.to}>
+                            <div className="flex gap-1.5">
+                                <DynamicIcon iconName={item.icon}/>
+                                {item.label}
+                            </div>
+                        </Link>
                     ) : (
                         <Menu.Root openOnHover>
                             <Menu.Trigger
                                 className="flex h-10 items-center justify-center gap-1.5 rounded-md px-3.5 text-base font-medium text-gray-900 select-none hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100 data-[popup-open]:bg-gray-100">
+                                <DynamicIcon iconName={item.icon}/>
                                 {item.label}
                                 <ChevronDownIcon className="-mr-1"/>
                             </Menu.Trigger>
@@ -59,11 +72,11 @@ export function Layout({children}: { children: React.ReactNode }) {
                                         {item.children.map((child: any, index: string | number) => (
                                             <Link to={child.to}>
                                                 <Menu.Item key={index}
-                                                           className="flex cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
+                                                           className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
+                                                    <DynamicIcon iconName={child.icon}/>
                                                     {child.label}
                                                 </Menu.Item>
                                             </Link>
-
                                         ))}
                                     </Menu.Popup>
                                 </Menu.Positioner>
