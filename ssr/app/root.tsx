@@ -26,7 +26,8 @@ export async function loader() {
 }
 
 function DynamicIcon({iconName}: { iconName: string }) {
-    const IconComponent = Icons[iconName];
+    // @ts-ignore
+    const IconComponent: any = Icons[iconName];
     return IconComponent ? <IconComponent/> : null;
 }
 
@@ -43,12 +44,12 @@ export function Layout({children}: { children: React.ReactNode }) {
             <Links/>
         </head>
         <body>
-        <div className="container mx-auto flex items-center font-medium gap-5">
+        <nav className="container mx-auto flex items-center gap-2">
             {menuItem.map((item: any) => (
                 <React.Fragment key={item.id}>
                     {item.children.length === 0 ? (
                         <Link to={item.to}>
-                            <div className="flex gap-1.5">
+                            <div className="flex items-center gap-1.5 text-[#62748e] hover:text-black">
                                 <DynamicIcon iconName={item.icon}/>
                                 {item.label}
                             </div>
@@ -56,7 +57,7 @@ export function Layout({children}: { children: React.ReactNode }) {
                     ) : (
                         <Menu.Root openOnHover>
                             <Menu.Trigger
-                                className="flex h-10 items-center justify-center gap-1.5 rounded-md px-3.5 text-base font-medium text-gray-900 select-none hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100 data-[popup-open]:bg-gray-100">
+                                className="flex h-10 items-center justify-center gap-1.5 rounded-md px-3.5 text-[#62748e] select-none hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100 data-[popup-open]:bg-gray-100">
                                 <DynamicIcon iconName={item.icon}/>
                                 {item.label}
                                 <ChevronDownIcon className="-mr-1"/>
@@ -70,7 +71,7 @@ export function Layout({children}: { children: React.ReactNode }) {
                                             <ArrowSvg/>
                                         </Menu.Arrow>
                                         {item.children.map((child: any, index: string | number) => (
-                                            <Link to={child.to}>
+                                            <Link className="app-nav-link" to={child.to}>
                                                 <Menu.Item key={index}
                                                            className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
                                                     <DynamicIcon iconName={child.icon}/>
@@ -85,7 +86,7 @@ export function Layout({children}: { children: React.ReactNode }) {
                     )}
                 </React.Fragment>
             ))}
-        </div>
+        </nav>
         {children}
         <ScrollRestoration/>
         <Scripts/>
