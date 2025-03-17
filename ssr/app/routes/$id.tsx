@@ -15,7 +15,6 @@ export async function loader({params}: Route.LoaderArgs) {
     } catch (error) {
         return {data: null};
     }
-
 }
 
 export default function PageIndex({loaderData}: Route.ComponentProps) {
