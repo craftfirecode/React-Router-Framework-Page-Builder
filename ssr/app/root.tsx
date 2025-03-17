@@ -49,8 +49,8 @@ export function Layout({children}: { children: React.ReactNode }) {
             <Meta/>
             <Links/>
         </head>
-        <body>
-        <nav className="container mx-auto flex items-center gap-2 mt-5">
+        <body className="dark">
+        <nav className="container mx-auto flex items-center gap-2 pt-5">
             {menuItem.map((item: any) => (
                 <React.Fragment key={item.id}>
                     {item.children.length === 0 ? (
@@ -58,8 +58,8 @@ export function Layout({children}: { children: React.ReactNode }) {
                             caseSensitive
                             className={({isActive}) =>
                                 isActive
-                                    ? "text-[#00c16a] bg-[#f1f5f9] rounded-md py-2 px-3"
-                                    : "text-[#62748e] py-2 px-3 transition-colors duration-450 hover:text-black"
+                                    ? "text-[#00c16a] bg-[#1d293d] rounded-md py-2 px-3"
+                                    : "text-[#62748e] py-2 px-3 transition-colors duration-450 hover:text-[#00c16a]"
                             }
                             to={item.to}
                         >
@@ -78,8 +78,8 @@ export function Layout({children}: { children: React.ReactNode }) {
                                 return (
                                     <>
                                         <Menu.Trigger
-                                            className={`flex h-10 items-center justify-center gap-1.5 rounded-md px-3.5 select-none focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100 data-[popup-open]:bg-gray-100 ${
-                                                hasActiveChild ? "text-[#00c16a] bg-[#f1f5f9]" : ""
+                                            className={`flex h-10 items-center justify-center gap-1.5 rounded-md px-3.5 select-none focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100 data-[popup-open]:text-[#00c16a] ${
+                                                hasActiveChild ? "text-[#00c16a] bg-[#1d293d]" : "text-[#62748e] py-2 px-3 transition-colors duration-450"
                                             }`}
                                         >
                                             <DynamicIcon iconName={item.icon}/>
