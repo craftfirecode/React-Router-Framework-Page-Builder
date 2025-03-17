@@ -2,7 +2,7 @@ import {
     isRouteErrorResponse,
     Link,
     Links,
-    Meta,
+    Meta, NavLink,
     Outlet,
     Scripts,
     ScrollRestoration,
@@ -48,12 +48,14 @@ export function Layout({children}: { children: React.ReactNode }) {
             {menuItem.map((item: any) => (
                 <React.Fragment key={item.id}>
                     {item.children.length === 0 ? (
-                        <Link to={item.to}>
-                            <div className="flex items-center gap-1.5 text-[#62748e] hover:text-black">
+                        <NavLink className={({isActive}) =>
+                            isActive ? "text-[#00c16a] bg-[#f1f5f9] rounded-md py-2 px-3" : "text-[#62748e] py-2 px-3 transition-colors duration-450 hover:text-black"
+                        } to={item.to}>
+                            <div className="flex items-center gap-1.5">
                                 <DynamicIcon iconName={item.icon}/>
                                 {item.label}
                             </div>
-                        </Link>
+                        </NavLink>
                     ) : (
                         <Menu.Root openOnHover>
                             <Menu.Trigger
