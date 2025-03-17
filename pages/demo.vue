@@ -15,6 +15,8 @@ if (error.value) {
 <template>
   <div>
     <h1>Settings Data</h1>
-    <pre>{{ settingsData?.data.top }}</pre>
+    <div v-if="settingsData?.data">
+      <pre>{{ settingsData?.data.top }}</pre>
+    </div>
   </div>
 </template>
