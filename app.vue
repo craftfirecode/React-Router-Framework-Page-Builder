@@ -19,6 +19,7 @@ const items = ref([
 </script>
 
 <template>
+  <AppHeader />
   <div class="container mx-auto bg-gray-200 mt-5">
       <div>
         <NuxtLayout>
