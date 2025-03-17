@@ -1,6 +1,6 @@
-import { ApiPlaceholder } from "~/api/strapi-api";
-import type {Route} from "./+types/blog.$id";
-import {useParams} from "react-router";
+import {ApiPlaceholder} from "~/api/strapi-api";
+import type {Route} from "./+types/$id";
+import {useLocation, useParams} from "react-router";
 
 export function meta({params}: Route.MetaArgs) {
     return [
@@ -20,11 +20,13 @@ export async function loader({params}: Route.LoaderArgs) {
 
 export default function BlogIndex({loaderData}: Route.ComponentProps) {
     const data = loaderData;
+    const location = useLocation();
     console.log(data);
     const {id} = useParams();
     return (
         <div>
-            <h1>Title: {data.title}</h1>
+            <h1>PAGE: {location.state}</h1>
+            <h1>PAGE: {data.title}</h1>
             <h1>ID: {data.id}</h1>
             useParams: {id}
         </div>

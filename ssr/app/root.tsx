@@ -56,6 +56,7 @@ export function Layout({children}: { children: React.ReactNode }) {
                 <React.Fragment key={item.id}>
                     {item.children.length === 0 ? (
                         <NavLink
+                            caseSensitive
                             className={({isActive}) =>
                                 isActive
                                     ? "text-[#00c16a] bg-[#f1f5f9] rounded-md py-2 px-3"
@@ -96,6 +97,7 @@ export function Layout({children}: { children: React.ReactNode }) {
                                                     </Menu.Arrow>
                                                     {item.children.map((child: any, index: number) => (
                                                         <NavLink
+                                                            caseSensitive
                                                             key={index}
                                                             className={({isActive}) =>
                                                                 isActive
