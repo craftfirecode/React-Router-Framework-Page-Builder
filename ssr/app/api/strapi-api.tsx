@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const headers = {
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_KEY}`,
+    Authorization: `Bearer ${import.meta.env.VITE_PUBLIC_STRAPI_API_KEY}`,
 };
 
 async function fetchData(url: string, params?: any) {
-    const apiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
+    const apiUrl = import.meta.env.VITE_PUBLIC_STRAPI_API_URL;
     if (!apiUrl) {
         throw new Error("API URL is not defined");
     }
@@ -47,9 +47,4 @@ export async function getPostData(urlFilter: string) {
 
 export async function getSettingsData() {
     return fetchData(`/api/navigation?&customPopulate=nested`);
-}
-
-export const ApiPlaceholder = async () => {
-    const response = await axios.get(`https://jsonplaceholder.typicode.com/todos/5`);
-    return response.data;
 }

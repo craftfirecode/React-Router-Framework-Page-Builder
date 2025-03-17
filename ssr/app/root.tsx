@@ -10,11 +10,11 @@ import {
 } from "react-router";
 import type {Route} from "./+types/root";
 import "./app.css";
-import {getSettingsData} from "~/api/strapi-api";
 import React from "react";
 import {Menu} from "@base-ui-components/react";
 import * as Icons from "lucide-react";
 import {useLocation} from "react-router";
+import {getSettingsData} from "~/api/strapi-api";
 
 
 export async function loader() {
