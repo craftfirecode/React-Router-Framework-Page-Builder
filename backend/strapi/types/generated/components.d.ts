@@ -1,5 +1,22 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CmsContent extends Struct.ComponentSchema {
+  collectionName: 'components_cms_contents';
+  info: {
+    description: '';
+    displayName: 'Content';
+  };
+  attributes: {
+    wysiwyg: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+  };
+}
+
 export interface ItemsNavItems extends Struct.ComponentSchema {
   collectionName: 'components_items_nav_items';
   info: {
@@ -32,6 +49,7 @@ export interface ItemsNavItemsChildren extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'cms.content': CmsContent;
       'items.nav-items': ItemsNavItems;
       'items.nav-items-children': ItemsNavItemsChildren;
     }

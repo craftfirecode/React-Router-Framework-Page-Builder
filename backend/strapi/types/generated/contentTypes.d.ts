@@ -401,6 +401,7 @@ export interface ApiNavigationNavigation extends Struct.SingleTypeSchema {
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: 'pages';
   info: {
+    description: '';
     displayName: 'Pages';
     pluralName: 'pages';
     singularName: 'page';
@@ -423,6 +424,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     url: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    zone: Schema.Attribute.DynamicZone<['cms.content']>;
   };
 }
 

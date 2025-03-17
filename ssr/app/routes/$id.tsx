@@ -17,9 +17,11 @@ export async function loader({params}: Route.LoaderArgs) {
 }
 
 export default function PageIndex({loaderData}: Route.ComponentProps) {
+    console.log(loaderData[0].zone[0].wysiwyg);
     return (
         <div className="container mx-auto mt-5">
             <h1>PAGE: {loaderData[0].title}</h1>
+            <div dangerouslySetInnerHTML={{__html: loaderData[0].zone[0].wysiwyg}}/>
         </div>
     );
 }
