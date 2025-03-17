@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3655c1cf-8e41-4830-8663-6c0fdefc6f4e" name="Changes" comment="add navigation components and types; create nav-items and nav-items-children schemas, update .gitignore, and implement navigation controller, router, and service">
-      <change afterPath="$PROJECT_DIR$/ssr/app/routes/blog.$id.tsx" afterDir="false" />
+    <list default="true" id="3655c1cf-8e41-4830-8663-6c0fdefc6f4e" name="Changes" comment="add blog index route with meta and data loader; implement useParams for dynamic routing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssr/app/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ssr/app/root.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +142,7 @@
       <workItem from="1742212088105" duration="186000" />
       <workItem from="1742217835644" duration="200000" />
       <workItem from="1742218540211" duration="2371000" />
-      <workItem from="1742221219691" duration="135000" />
+      <workItem from="1742221219691" duration="568000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -208,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742221011461</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add blog index route with meta and data loader; implement useParams for dynamic routing">
+      <option name="closed" value="true" />
+      <created>1742221368291</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1742221368291</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +244,7 @@
     <MESSAGE value="add initial project files including configuration, routing, and styling setup" />
     <MESSAGE value="refactor routing and API integration; rename home component, add settings data fetching, and update styles" />
     <MESSAGE value="add navigation components and types; create nav-items and nav-items-children schemas, update .gitignore, and implement navigation controller, router, and service" />
-    <option name="LAST_COMMIT_MESSAGE" value="add navigation components and types; create nav-items and nav-items-children schemas, update .gitignore, and implement navigation controller, router, and service" />
+    <MESSAGE value="add blog index route with meta and data loader; implement useParams for dynamic routing" />
+    <option name="LAST_COMMIT_MESSAGE" value="add blog index route with meta and data loader; implement useParams for dynamic routing" />
   </component>
 </project>
