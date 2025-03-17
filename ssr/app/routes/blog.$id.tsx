@@ -1,4 +1,4 @@
-import { ApiPlaceholder } from "~/api/strapi-api";
+import {ApiPlaceholder} from "~/api/strapi-api";
 import type {Route} from "./+types/blog.$id";
 import {useParams} from "react-router";
 
@@ -23,7 +23,7 @@ export default function BlogIndex({loaderData}: Route.ComponentProps) {
     console.log(data);
     const {id} = useParams();
     return (
-        <div>
+        <div className="container mx-auto mt-5">
             <h1>Title: {data.title}</h1>
             <h1>ID: {data.id}</h1>
             useParams: {id}
