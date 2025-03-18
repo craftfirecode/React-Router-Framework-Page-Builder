@@ -39,6 +39,19 @@ export interface CmsImage extends Struct.ComponentSchema {
   };
 }
 
+export interface CmsSpace extends Struct.ComponentSchema {
+  collectionName: 'components_cms_spaces';
+  info: {
+    description: '';
+    displayName: 'Space';
+  };
+  attributes: {
+    margin: Schema.Attribute.Enumeration<
+      ['mt-5', 'mt-10', 'mt-15', 'mt-20', 'mt-30']
+    >;
+  };
+}
+
 export interface ItemsNavItems extends Struct.ComponentSchema {
   collectionName: 'components_items_nav_items';
   info: {
@@ -74,6 +87,7 @@ declare module '@strapi/strapi' {
       'cms.button': CmsButton;
       'cms.content': CmsContent;
       'cms.image': CmsImage;
+      'cms.space': CmsSpace;
       'items.nav-items': ItemsNavItems;
       'items.nav-items-children': ItemsNavItemsChildren;
     }

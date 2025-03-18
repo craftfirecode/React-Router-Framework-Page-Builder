@@ -24,7 +24,8 @@
       "components": [
         "cms.content",
         "cms.image",
-        "cms.button"
+        "cms.button",
+        "cms.space"
       ]
     }
   }

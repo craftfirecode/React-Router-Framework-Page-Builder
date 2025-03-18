@@ -3,6 +3,7 @@ import {Image} from "~/components/ui/image";
 import {Content} from "~/components/ui/content";
 import {Button} from "~/components/ui/button";
 import {Link} from "react-router";
+import {Space} from "~/components/ui/space";
 
 export const Builder = ({data}: any) => {
     const renderComponent = (component: any) => {
@@ -10,13 +11,13 @@ export const Builder = ({data}: any) => {
             case "cms.image":
                 return (
                     <section className="">
-                        <Image data={component} />
+                        <Image data={component}/>
                     </section>
                 );
             case "cms.content":
                 return (
                     <section className="">
-                        <Content data={component} />
+                        <Content data={component}/>
                     </section>
                 );
             case "cms.button":
@@ -25,6 +26,12 @@ export const Builder = ({data}: any) => {
                         <Link target={component.blank ? "_blank" : undefined} to={component.to}>
                             <Button>{component.value}</Button>
                         </Link>
+                    </section>
+                );
+            case "cms.space":
+                return (
+                    <section className="">
+                        <Space data={component}/>
                     </section>
                 );
             default:
