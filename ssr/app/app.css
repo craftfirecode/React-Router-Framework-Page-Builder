@@ -11,8 +11,8 @@
 
 html,
 body {
-    @apply bg-white dark:bg-gray-950;
-    height: 100vh;
+    @apply bg-gray-950;
+
     @media (prefers-color-scheme: dark) {
         color-scheme: dark;
     }
@@ -134,10 +134,20 @@ nav svg, .app-nav-link svg {
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+    * {
+        @apply border-border outline-ring/50;
     }
-  body {
-    @apply bg-background text-foreground;
+
+    body {
+        @apply bg-background text-foreground;
     }
+}
+
+.border-fx {
+    position: relative;
+    overflow: hidden;
+    padding: 2px;
+    background: linear-gradient(90deg, #f0f, #0ff, #ff0, #f0f);
+    background-size: 200% 200%;
+    animation: gradient-spin 5s linear infinite;
 }

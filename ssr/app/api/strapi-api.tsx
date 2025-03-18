@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const headers = {
     Authorization: `Bearer ${import.meta.env.VITE_PUBLIC_STRAPI_API_KEY}`,
 };
@@ -10,7 +8,6 @@ async function fetchData(url: string, params?: any) {
         throw new Error("API URL is not defined");
     }
 
-    // Prepare the full URL with query parameters
     const queryParams = new URLSearchParams(params).toString();
     const fullUrl = `${apiUrl}${url}${queryParams ? `?${queryParams}` : ''}`;
 
@@ -18,9 +15,7 @@ async function fetchData(url: string, params?: any) {
         const response = await fetch(fullUrl, {
             method: 'GET',
             headers: {
-                // Include necessary headers, for example:
                 'Content-Type': 'application/json',
-                // Add other headers if needed
                 ...headers,
             }
         });
@@ -45,6 +40,10 @@ export async function getPostData(urlFilter: string) {
     return fetchData(`/api/posts?filters[url][$eq]=${urlFilter}&customPopulate=nested`);
 }
 
+export async function getPostListData() {
+    return fetchData(`/api/posts?customPopulate=nested`);
+}
+
 export async function getSettingsData() {
-    return fetchData(`/api/navigation?&customPopulate=nested`);
+    return fetchData(`/api/navigation?customPopulate=nested`);
 }

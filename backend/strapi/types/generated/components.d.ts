@@ -39,6 +39,17 @@ export interface CmsImage extends Struct.ComponentSchema {
   };
 }
 
+export interface CmsPostList extends Struct.ComponentSchema {
+  collectionName: 'components_cms_post_lists';
+  info: {
+    description: '';
+    displayName: 'Post List';
+  };
+  attributes: {
+    headline: Schema.Attribute.String;
+  };
+}
+
 export interface CmsSpace extends Struct.ComponentSchema {
   collectionName: 'components_cms_spaces';
   info: {
@@ -87,6 +98,7 @@ declare module '@strapi/strapi' {
       'cms.button': CmsButton;
       'cms.content': CmsContent;
       'cms.image': CmsImage;
+      'cms.post-list': CmsPostList;
       'cms.space': CmsSpace;
       'items.nav-items': ItemsNavItems;
       'items.nav-items-children': ItemsNavItemsChildren;

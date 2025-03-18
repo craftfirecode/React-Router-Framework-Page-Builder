@@ -25,7 +25,8 @@
         "cms.content",
         "cms.image",
         "cms.button",
-        "cms.space"
+        "cms.space",
+        "cms.post-list"
       ]
     }
   }
