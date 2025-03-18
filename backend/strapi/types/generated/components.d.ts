@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CmsButton extends Struct.ComponentSchema {
+  collectionName: 'components_cms_buttons';
+  info: {
+    displayName: 'Button';
+  };
+  attributes: {
+    blank: Schema.Attribute.Boolean;
+    to: Schema.Attribute.String;
+    value: Schema.Attribute.String;
+  };
+}
+
 export interface CmsContent extends Struct.ComponentSchema {
   collectionName: 'components_cms_contents';
   info: {
@@ -59,6 +71,7 @@ export interface ItemsNavItemsChildren extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'cms.button': CmsButton;
       'cms.content': CmsContent;
       'cms.image': CmsImage;
       'items.nav-items': ItemsNavItems;

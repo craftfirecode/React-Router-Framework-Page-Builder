@@ -1,21 +1,31 @@
 import React from "react";
 import {Image} from "~/components/ui/image";
 import {Content} from "~/components/ui/content";
+import {Button} from "~/components/ui/button";
+import {Link} from "react-router";
 
 export const Builder = ({data}: any) => {
     const renderComponent = (component: any) => {
         switch (component.__component) {
             case "cms.image":
                 return (
-                    <div className="">
+                    <section className="">
                         <Image data={component} />
-                    </div>
+                    </section>
                 );
             case "cms.content":
                 return (
-                    <div className="">
+                    <section className="">
                         <Content data={component} />
-                    </div>
+                    </section>
+                );
+            case "cms.button":
+                return (
+                    <section className="">
+                        <Link target={component.blank ? "_blank" : undefined} to={component.to}>
+                            <Button>{component.value}</Button>
+                        </Link>
+                    </section>
                 );
             default:
                 return null;

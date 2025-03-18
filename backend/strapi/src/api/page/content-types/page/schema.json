@@ -23,7 +23,8 @@
       "type": "dynamiczone",
       "components": [
         "cms.content",
-        "cms.image"
+        "cms.image",
+        "cms.button"
       ]
     }
   }
