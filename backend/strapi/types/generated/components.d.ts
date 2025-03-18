@@ -17,6 +17,16 @@ export interface CmsContent extends Struct.ComponentSchema {
   };
 }
 
+export interface CmsImage extends Struct.ComponentSchema {
+  collectionName: 'components_cms_images';
+  info: {
+    displayName: 'Image';
+  };
+  attributes: {
+    item: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
 export interface ItemsNavItems extends Struct.ComponentSchema {
   collectionName: 'components_items_nav_items';
   info: {
@@ -50,6 +60,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'cms.content': CmsContent;
+      'cms.image': CmsImage;
       'items.nav-items': ItemsNavItems;
       'items.nav-items-children': ItemsNavItemsChildren;
     }

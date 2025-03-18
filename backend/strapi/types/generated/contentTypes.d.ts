@@ -424,13 +424,14 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     url: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    zone: Schema.Attribute.DynamicZone<['cms.content']>;
+    zone: Schema.Attribute.DynamicZone<['cms.content', 'cms.image']>;
   };
 }
 
 export interface ApiPostPost extends Struct.CollectionTypeSchema {
   collectionName: 'posts';
   info: {
+    description: '';
     displayName: 'Post';
     pluralName: 'posts';
     singularName: 'post';
@@ -451,7 +452,7 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     url: Schema.Attribute.String;
-    zone: Schema.Attribute.DynamicZone<['cms.content']>;
+    zone: Schema.Attribute.DynamicZone<['cms.content', 'cms.image']>;
   };
 }
 

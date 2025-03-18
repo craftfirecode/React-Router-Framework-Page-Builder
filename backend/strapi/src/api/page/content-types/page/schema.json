@@ -22,7 +22,8 @@
     "zone": {
       "type": "dynamiczone",
       "components": [
-        "cms.content"
+        "cms.content",
+        "cms.image"
       ]
     }
   }
