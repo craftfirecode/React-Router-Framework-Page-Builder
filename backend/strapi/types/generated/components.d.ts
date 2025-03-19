@@ -29,13 +29,35 @@ export interface CmsContent extends Struct.ComponentSchema {
   };
 }
 
+export interface CmsContentImage extends Struct.ComponentSchema {
+  collectionName: 'components_cms_content_images';
+  info: {
+    description: '';
+    displayName: 'ContentImage';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    revert: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    wysiwyg: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+  };
+}
+
 export interface CmsImage extends Struct.ComponentSchema {
   collectionName: 'components_cms_images';
   info: {
+    description: '';
     displayName: 'Image';
   };
   attributes: {
-    item: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -120,6 +142,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'cms.button': CmsButton;
       'cms.content': CmsContent;
+      'cms.content-image': CmsContentImage;
       'cms.image': CmsImage;
       'cms.post-list': CmsPostList;
       'cms.space': CmsSpace;

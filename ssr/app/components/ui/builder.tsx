@@ -5,6 +5,7 @@ import {Button} from "~/components/ui/button";
 import {Link} from "react-router";
 import {Space} from "~/components/ui/space";
 import {PostList} from "~/components/ui/post-list";
+import {ContentImage} from "~/components/ui/content-image";
 
 export const Builder = ({data}: any) => {
     const renderComponent = (component: any) => {
@@ -39,6 +40,12 @@ export const Builder = ({data}: any) => {
                 return (
                     <section className="">
                         <PostList data={component}/>
+                    </section>
+                );
+            case "cms.content-image":
+                return (
+                    <section className="">
+                        <ContentImage data={component}/>
                     </section>
                 );
             default:
