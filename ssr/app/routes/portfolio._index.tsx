@@ -1,29 +1,28 @@
-"use client"
-
 import {getPostListData} from "~/api/strapi-api";
-import {useEffect, useState} from "react";
-import {Button} from "~/components/ui/button";
+import type {Route} from "./+types/portfolio._index";
 import {Link} from "react-router";
+import {Button} from "~/components/ui/button";
 
-export const PostList = ({data}: { data: any }) => {
+export function meta({params}: Route.MetaArgs) {
+    return [
+        {title: `Blog ${params.id}`},
+        {name: "description", content: "Welcome to React Router!"},
+    ];
+}
 
-    const [dataPosts, setDataPosts] = useState<any[]>([]);
+export async function loader() {
+    try {
+        return await getPostListData();
+    } catch (error) {
+        return {data: null};
+    }
+}
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await getPostListData();
-            console.log('dataPosts', res)
-            setDataPosts(res);
-        };
-
-        fetchData();
-    }, []);
-
+export default function Portfolio_index({loaderData}: Route.ComponentProps) {
     return (
-        <>
-            <h1>{data.headline}</h1>
-            <div className="grid grid-cols-3 gap-3">
-                {dataPosts.map((item: any, index: string | number) => (
+        <div className="container mx-auto mt-5">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+                {loaderData.map((item: any, index: string | number) => (
                     <div className="border-fx">
                         <div className="bg-[#030712]">
                             <img src={import.meta.env.VITE_PUBLIC_STRAPI_API_URL + item.thumbnail.url}
@@ -38,6 +37,7 @@ export const PostList = ({data}: { data: any }) => {
                     </div>
                 ))}
             </div>
-        </>
-    )
+        </div>
+
+    );
 }

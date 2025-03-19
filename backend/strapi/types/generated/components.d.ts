@@ -82,6 +82,7 @@ export interface ItemsNavItems extends Struct.ComponentSchema {
 export interface ItemsNavItemsChildren extends Struct.ComponentSchema {
   collectionName: 'components_items_nav_items_children';
   info: {
+    description: '';
     displayName: 'Nav-items-children';
   };
   attributes: {

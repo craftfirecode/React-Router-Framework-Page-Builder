@@ -1,6 +1,5 @@
 import {getPostData} from "~/api/strapi-api";
-import type {Route} from "./+types/post.$id";
-import {Content} from "~/components/ui/content";
+import type {Route} from "./+types/portfolio.$id";
 import {Builder} from "~/components/ui/builder";
 
 export function meta({params}: Route.MetaArgs) {
@@ -21,7 +20,7 @@ export async function loader({params}: Route.LoaderArgs) {
 export default function PostIndex({loaderData}: Route.ComponentProps) {
     return (
         <div className="container mx-auto mt-5">
-            <Builder data={loaderData} />
+            <Builder data={loaderData}/>
         </div>
     );
 }

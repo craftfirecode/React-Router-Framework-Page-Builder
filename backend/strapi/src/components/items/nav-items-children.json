@@ -1,7 +1,8 @@
 {
   "collectionName": "components_items_nav_items_children",
   "info": {
-    "displayName": "Nav-items-children"
+    "displayName": "Nav-items-children",
+    "description": ""
   },
   "options": {},
   "attributes": {
