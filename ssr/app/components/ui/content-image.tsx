@@ -7,7 +7,7 @@ export const ContentImage = ({data}: { data: any }) => {
             <div>
                 <Image data={data}/>
             </div>
-            <div className={data.revert && 'order-first'}>
+            <div className={data.revert ? 'order-first md:order-last' : 'order-first'}>
                 <Content data={data}/>
             </div>
         </div>
