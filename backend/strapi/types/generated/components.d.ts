@@ -93,6 +93,16 @@ export interface ItemsNavItemsChildren extends Struct.ComponentSchema {
   };
 }
 
+export interface ItemsPostTag extends Struct.ComponentSchema {
+  collectionName: 'components_items_post_tags';
+  info: {
+    displayName: 'post-tag';
+  };
+  attributes: {
+    tag: Schema.Attribute.Enumeration<['UX/ UI', 'Frontend', 'Full Stack']>;
+  };
+}
+
 export interface MetaMeta extends Struct.ComponentSchema {
   collectionName: 'components_meta_metas';
   info: {
@@ -115,6 +125,7 @@ declare module '@strapi/strapi' {
       'cms.space': CmsSpace;
       'items.nav-items': ItemsNavItems;
       'items.nav-items-children': ItemsNavItemsChildren;
+      'items.post-tag': ItemsPostTag;
       'meta.meta': MetaMeta;
     }
   }

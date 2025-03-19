@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_items_post_tags",
+  "info": {
+    "displayName": "post-tag"
+  },
+  "options": {},
+  "attributes": {
+    "tag": {
+      "type": "enumeration",
+      "enum": [
+        "UX/ UI",
+        "Frontend",
+        "Full Stack"
+      ]
+    }
+  }
+}
