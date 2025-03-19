@@ -28,7 +28,7 @@ export default function Portfolio_index({loaderData}: Route.ComponentProps) {
                         <div className="bg-[#030712]">
                             <Link to={"/portfolio/" + item.url}>
                                 <img src={import.meta.env.VITE_PUBLIC_STRAPI_API_URL + item.thumbnail.url}
-                                     className="w-full" alt=""/>
+                                     className="w-full h-48 object-cover hover:grayscale" alt=""/>
                             </Link>
                             <div className="bg-black p-3">
                                 <h3 className="font-bold">{item.title}</h3>

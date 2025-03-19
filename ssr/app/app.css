@@ -156,3 +156,59 @@ nav .brand {
     background-size: 200% 200%;
     animation: gradient-spin 5s linear infinite;
 }
+
+h1 {
+    font-size: 2.5rem; /* Bootstrap 4: 2.5rem corresponds to 40px */
+    font-weight: 500; /* Bootstrap 4: font-weight for h1 */
+    line-height: 1.2; /* Bootstrap 4: line-height for h1 */
+}
+
+h2 {
+    font-size: 2rem; /* Bootstrap 4: 2rem corresponds to 32px */
+    font-weight: 500; /* Bootstrap 4: font-weight for h2 */
+    line-height: 1.2; /* Bootstrap 4: line-height for h2 */
+}
+
+h3 {
+    font-size: 1.75rem; /* Bootstrap 4: 1.75rem corresponds to 28px */
+    font-weight: 500; /* Bootstrap 4: font-weight for h3 */
+    line-height: 1.2; /* Bootstrap 4: line-height for h3 */
+}
+
+h4 {
+    font-size: 1.5rem; /* Bootstrap 4: 1.5rem corresponds to 24px */
+    font-weight: 500; /* Bootstrap 4: font-weight for h4 */
+    line-height: 1.2; /* Bootstrap 4: line-height for h4 */
+}
+
+h5 {
+    font-size: 1.25rem; /* Bootstrap 4: 1.25rem corresponds to 20px */
+    font-weight: 500; /* Bootstrap 4: font-weight for h5 */
+    line-height: 1.2; /* Bootstrap 4: line-height for h5 */
+}
+
+h6 {
+    font-size: 1rem; /* Bootstrap 4: 1rem corresponds to 16px */
+    font-weight: 500; /* Bootstrap 4: font-weight for h6 */
+    line-height: 1.2; /* Bootstrap 4: line-height for h6 */
+}
+
+small {
+    font-size: 0.875rem; /* Bootstrap 4: 0.875rem corresponds to 14px */
+    font-weight: 400; /* Bootstrap 4: font-weight for small */
+    line-height: 1.2; /* Bootstrap 4: line-height for small */
+}
+
+.bold {
+    font-weight: 700; /* Bootstrap 4: font-weight for bold */
+}
+
+body {
+    font-size: 1rem; /* Bootstrap 4: 1rem corresponds to 16px */
+    font-weight: 400; /* Bootstrap 4: font-weight for body */
+    line-height: 1.5; /* Bootstrap 4: line-height for body */
+}
+
+button {
+    cursor: pointer;
+}

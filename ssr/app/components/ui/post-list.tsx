@@ -4,6 +4,7 @@ import {getPostListData} from "~/api/strapi-api";
 import {useEffect, useState} from "react";
 import {Button} from "~/components/ui/button";
 import {Link} from "react-router";
+import {Badge} from "~/components/ui/badge";
 
 export const PostList = ({data}: { data: any }) => {
 
@@ -26,10 +27,18 @@ export const PostList = ({data}: { data: any }) => {
                 {dataPosts.map((item: any, index: string | number) => (
                     <div className="border-fx">
                         <div className="bg-[#030712]">
-                            <img src={import.meta.env.VITE_PUBLIC_STRAPI_API_URL + item.thumbnail.url}
-                                 className="w-full" alt=""/>
+                            <Link to={"/portfolio/" + item.url}>
+                                <img src={import.meta.env.VITE_PUBLIC_STRAPI_API_URL + item.thumbnail.url}
+                                     className="w-full" alt=""/>
+                            </Link>
                             <div className="bg-black p-3">
-                                <h1>{item.title}</h1>
+                                <h3 className="font-bold">{item.title}</h3>
+                                <div className="mb-3">
+                                    <Badge>{item.tag.tag}</Badge>
+                                </div>
+                                <div className="mb-8">
+                                    {item.description}
+                                </div>
                                 <Link to={"/portfolio/" + item.url}>
                                     <Button>Jetzt Lesen</Button>
                                 </Link>
