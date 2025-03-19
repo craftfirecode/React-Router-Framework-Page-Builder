@@ -26,6 +26,11 @@ nav svg, .app-nav-link svg {
     height: 20px;
 }
 
+nav .brand {
+    height: 45px;
+    width: auto;
+}
+
 :root {
     --radius: 0.625rem;
     --background: oklch(1 0 0);
