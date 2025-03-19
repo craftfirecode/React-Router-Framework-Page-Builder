@@ -16,9 +16,6 @@
       "unique": true,
       "required": true
     },
-    "title": {
-      "type": "string"
-    },
     "zone": {
       "type": "dynamiczone",
       "components": [
@@ -27,7 +24,14 @@
         "cms.button",
         "cms.space",
         "cms.post-list"
-      ]
+      ],
+      "required": true
+    },
+    "settings": {
+      "type": "component",
+      "repeatable": false,
+      "component": "meta.meta",
+      "required": true
     }
   }
 }

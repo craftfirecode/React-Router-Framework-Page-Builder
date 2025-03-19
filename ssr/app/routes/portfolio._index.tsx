@@ -5,7 +5,7 @@ import {Button} from "~/components/ui/button";
 
 export function meta({params}: Route.MetaArgs) {
     return [
-        {title: `Blog ${params.id}`},
+        {title: `CRAFTFIRE - Portfolio`},
         {name: "description", content: "Welcome to React Router!"},
     ];
 }

@@ -12,10 +12,8 @@
   },
   "attributes": {
     "url": {
-      "type": "string"
-    },
-    "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "zone": {
       "type": "dynamiczone",
@@ -24,17 +22,25 @@
         "cms.image",
         "cms.button",
         "cms.space"
-      ]
+      ],
+      "required": true
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "settings": {
+      "type": "component",
+      "repeatable": false,
+      "component": "meta.meta",
+      "required": true
     }
   }
 }

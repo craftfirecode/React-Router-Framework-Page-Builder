@@ -93,6 +93,18 @@ export interface ItemsNavItemsChildren extends Struct.ComponentSchema {
   };
 }
 
+export interface MetaMeta extends Struct.ComponentSchema {
+  collectionName: 'components_meta_metas';
+  info: {
+    description: '';
+    displayName: 'meta';
+  };
+  attributes: {
+    description: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -103,6 +115,7 @@ declare module '@strapi/strapi' {
       'cms.space': CmsSpace;
       'items.nav-items': ItemsNavItems;
       'items.nav-items-children': ItemsNavItemsChildren;
+      'meta.meta': MetaMeta;
     }
   }
 }
