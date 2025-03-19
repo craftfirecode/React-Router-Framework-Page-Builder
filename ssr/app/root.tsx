@@ -6,12 +6,14 @@ import {
     Scripts,
     ScrollRestoration,
     useLoaderData,
+    useLocation,
 } from "react-router";
 import type {Route} from "./+types/root";
 import "./app.css";
 import React from "react";
 import {getSettingsData} from "~/api/strapi-api";
 import {Navigation} from "~/components/ui/navigation";
+import {TopBreadcrumb} from "~/components/ui/top-breadcrumb";
 
 export async function loader() {
     try {
@@ -23,7 +25,9 @@ export async function loader() {
 }
 
 export function Layout({children}: { children: React.ReactNode }) {
+    const location = useLocation();
     const loaderData: any = useLoaderData<Route.ComponentProps>();
+    const isPortfolioPage = /^\/portfolio(\/|$)/.test(location.pathname);
 
     return (
         <html lang="en">
@@ -34,7 +38,12 @@ export function Layout({children}: { children: React.ReactNode }) {
             <Links/>
         </head>
         <body className="dark">
-        <Navigation data={loaderData.top} />
+        <Navigation data={loaderData.top}/>
+        {isPortfolioPage && (
+            <div className="container mx-auto my-5">
+                <TopBreadcrumb/>
+            </div>
+        )}
         {children}
         <ScrollRestoration/>
         <Scripts/>
