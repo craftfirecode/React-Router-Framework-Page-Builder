@@ -1,10 +1,10 @@
 import {getPageData} from "~/api/strapi-api";
-import type {Route} from "./+types/_index";
+import type {Route} from "./+types/$id";
 import {Builder} from "~/components/ui/builder";
 
 export async function loader({params}: Route.LoaderArgs) {
     try {
-        return await getPageData("index");
+        return await getPageData(params.id);
     } catch (error) {
         return {data: null};
     }
