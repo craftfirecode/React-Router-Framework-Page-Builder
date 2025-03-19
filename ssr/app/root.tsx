@@ -14,6 +14,7 @@ import React from "react";
 import {getSettingsData} from "~/api/strapi-api";
 import {Navigation} from "~/components/ui/navigation";
 import {TopBreadcrumb} from "~/components/ui/top-breadcrumb";
+import {Footer} from "~/components/ui/footer";
 
 export async function loader() {
     try {
@@ -37,14 +38,19 @@ export function Layout({children}: { children: React.ReactNode }) {
             <Meta/>
             <Links/>
         </head>
-        <body className="dark">
-        <Navigation data={loaderData.top}/>
-        {isPortfolioPage && (
-            <div className="container mx-auto my-5">
-                <TopBreadcrumb/>
+        <body className="dark h-[100vh]">
+        <div className="flex flex-col h-[100vh]">
+            <Navigation data={loaderData.top}/>
+            {isPortfolioPage && (
+                <div className="container mx-auto my-5">
+                    <TopBreadcrumb/>
+                </div>
+            )}
+            <div className="flex-1 flex flex-col">
+                {children}
             </div>
-        )}
-        {children}
+            <Footer/>
+        </div>
         <ScrollRestoration/>
         <Scripts/>
         </body>
