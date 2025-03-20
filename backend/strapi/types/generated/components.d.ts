@@ -36,6 +36,7 @@ export interface CmsContentImage extends Struct.ComponentSchema {
     displayName: 'ContentImage';
   };
   attributes: {
+    button: Schema.Attribute.Component<'cms.button', false>;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.Required;
     revert: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;

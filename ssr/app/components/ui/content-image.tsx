@@ -1,5 +1,7 @@
 import {Content} from "~/components/ui/content";
 import {Image} from "~/components/ui/image";
+import {Button} from "~/components/ui/button";
+import {Link} from "react-router";
 
 export const ContentImage = ({data}: { data: any }) => {
     return (
@@ -9,6 +11,13 @@ export const ContentImage = ({data}: { data: any }) => {
             </div>
             <div className={data.revert ? 'order-first md:order-last' : 'order-first'}>
                 <Content data={data}/>
+                {data.button && (
+                    <div className="mt-5">
+                        <Link to={data.button.to}>
+                            <Button>{data.button.value}</Button>
+                        </Link>
+                    </div>
+                )}
             </div>
         </div>
     )

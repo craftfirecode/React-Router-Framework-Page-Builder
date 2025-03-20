@@ -28,6 +28,11 @@
     "revert": {
       "type": "boolean",
       "default": false
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cms.button"
     }
   }
 }
