@@ -51,13 +51,10 @@
       "required": true
     },
     "title": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "description": {
-      "type": "text",
-      "maxLength": 150,
-      "required": true
+      "type": "text"
     }
   }
 }

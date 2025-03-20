@@ -119,10 +119,22 @@ export interface ItemsNavItemsChildren extends Struct.ComponentSchema {
 export interface ItemsPostTag extends Struct.ComponentSchema {
   collectionName: 'components_items_post_tags';
   info: {
+    description: '';
     displayName: 'post-tag';
   };
   attributes: {
-    tag: Schema.Attribute.Enumeration<['UX/ UI', 'Frontend', 'Full Stack']>;
+    tag: Schema.Attribute.Enumeration<
+      [
+        'UX /UI-Design',
+        'UI-Design',
+        'UX-Design',
+        'Frontend',
+        'Full Stack',
+        'UX /UI-Design & Prototype',
+        'UI-Design & Prototype',
+        'CEO',
+      ]
+    >;
   };
 }
 

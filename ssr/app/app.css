@@ -216,3 +216,7 @@ button {
 .container {
     @apply px-[15px]
 }
+
+a:hover {
+    color: #00c16a;
+}

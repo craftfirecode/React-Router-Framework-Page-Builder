@@ -25,14 +25,14 @@ export default function Portfolio_index({loaderData}: Route.ComponentProps) {
             <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 {loaderData.map((item: any, index: string | number) => (
                     <div className="border-fx">
-                        <div className="bg-[#030712]">
+                        <div className="bg-black h-[100%]">
                             <Link to={"/portfolio/" + item.url}>
                                 <img src={import.meta.env.VITE_PUBLIC_STRAPI_API_URL + item.thumbnail.url}
                                      className="w-full h-48 object-cover hover:grayscale" alt=""/>
                             </Link>
-                            <div className="bg-black p-3">
+                            <div className="p-3">
                                 <h3 className="font-bold">{item.title}</h3>
-                                <div className="mb-3">
+                                <div className="my-3">
                                     <Badge>{item.tag.tag}</Badge>
                                 </div>
                                 <div className="mb-8">
