@@ -22,8 +22,8 @@ export const PostList = ({data}: { data: any }) => {
 
     return (
         <>
-            <h1>{data.headline}</h1>
-            <div className="grid grid-cols-3 gap-3">
+            <h3 className="mb-5">{data.headline}</h3>
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 {dataPosts.map((item: any, index: string | number) => (
                     <div className="border-fx">
                         <div className="bg-[#030712]">
