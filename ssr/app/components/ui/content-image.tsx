@@ -9,7 +9,7 @@ export const ContentImage = ({data}: { data: any }) => {
             <div>
                 <Image data={data}/>
             </div>
-            <div className={data.revert ? 'order-first md:order-last' : 'order-first'}>
+            <div className={data.revert ? 'order-last' : 'order-last md:order-first'}>
                 <Content data={data}/>
                 {data.button && (
                     <div className="mt-5">
