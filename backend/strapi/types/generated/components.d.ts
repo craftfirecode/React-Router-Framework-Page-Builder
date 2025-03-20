@@ -133,6 +133,7 @@ export interface ItemsPostTag extends Struct.ComponentSchema {
         'UX /UI-Design & Prototype',
         'UI-Design & Prototype',
         'CEO',
+        'Full-Cycle-Design & Full-Stack Development',
       ]
     >;
   };
