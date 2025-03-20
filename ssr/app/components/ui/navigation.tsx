@@ -3,9 +3,21 @@ import React from "react";
 import {Menu} from "@base-ui-components/react";
 import * as Icons from "lucide-react";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "~/components/ui/accordion";
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger
+} from "~/components/ui/sheet";
+import {Button} from "~/components/ui/button";
+import {cn} from '~/lib/utils';
 
 export const Navigation = ({data}: { data: any }) => {
     const location = useLocation();
+    const [open, setOpen] = React.useState(false);
 
     function DynamicIcon({iconName}: { iconName: string }) {
         // @ts-ignore
@@ -118,72 +130,93 @@ export const Navigation = ({data}: { data: any }) => {
                         </svg>
                     </div>
                 </Link>
-                <Accordion type="single" collapsible>
-                    <div className="">
-                        {data.map((item: any, index: number) => (
-                            <div className="" key={item.id}>
-                                {item.children.length === 0 ? (
-                                    <NavLink
-                                        caseSensitive
-                                        className={({isActive}) =>
-                                            isActive
-                                                ? "text-[#00c16a] flex bg-[#1d293d] py-2 px-3"
-                                                : "text-[#62748e] flex py-2 px-3 transition-colors duration-450 hover:text-[#00c16a]"
-                                        }
-                                        to={item.to}
-                                    >
-                                        <div className="flex items-center gap-1.5">
-                                            <DynamicIcon iconName={item.icon}/>
-                                            {item.label}
-                                        </div>
-                                    </NavLink>
-                                ) : (
-                                    <>
-                                        {(() => {
-                                            const hasActiveChild = item.children.some((child: any) =>
-                                                isActive(child.to)
-                                            );
-                                            return (
-                                                <AccordionItem
-                                                    value={item.id}
-                                                    className={` ${
-                                                        hasActiveChild ? "text-[#00c16a] bg-[#1d293d] py-2 px-3" : "text-[#62748e] py-2 px-3 transition-colors duration-450"
-                                                    }`}>
-                                                    <AccordionTrigger className="p-0 m-0">
-                                                        <div className="flex items-center gap-1.5">
-                                                            <DynamicIcon iconName={item.icon}/>
-                                                            {item.label}
-                                                        </div>
-                                                    </AccordionTrigger>
-                                                    <AccordionContent>
-                                                        {item.children.map((child: any, index: number) => (
-                                                            <NavLink
-                                                                caseSensitive
-                                                                key={index}
-                                                                className={({isActive}) =>
-                                                                    isActive
-                                                                        ? "app-nav-link text-[#00c16a] bg-[#f1f5f9]"
-                                                                        : "app-nav-link text-[#62748e] hover:text-black"
-                                                                }
-                                                                to={child.to}
-                                                            >
-                                                                <div
-                                                                    className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
-                                                                    <DynamicIcon iconName={child.icon}/>
-                                                                    {child.label}
+                <Sheet open={open}>
+                    <SheetTrigger asChild>
+                        <Button onClick={() => setOpen(true)} variant="outline">Open</Button>
+                    </SheetTrigger>
+                    <SheetContent onPointerDownOutside={() => setOpen(false)}>
+                        <SheetHeader>
+                            <SheetTitle>CRAFTFIRE</SheetTitle>
+                            <SheetDescription>
+                            </SheetDescription>
+                        </SheetHeader>
+                        <Accordion type="single" collapsible>
+                            <div className="">
+                                {data.map((item: any, index: number) => (
+                                    <div className="" key={item.id}>
+                                        {item.children.length === 0 ? (
+                                            <NavLink
+                                                onClick={() => setOpen(false)}
+                                                caseSensitive
+                                                className={({isActive}) =>
+                                                    isActive
+                                                        ? "text-[#00c16a] flex bg-[#1d293d] py-2 px-3"
+                                                        : "text-[#62748e] flex py-2 px-3 transition-colors duration-450 hover:text-[#00c16a]"
+                                                }
+                                                to={item.to}
+                                            >
+                                                <div className="flex items-center gap-1.5">
+                                                    <DynamicIcon iconName={item.icon}/>
+                                                    {item.label}
+                                                </div>
+                                            </NavLink>
+                                        ) : (
+                                            <>
+                                                {(() => {
+                                                    const hasActiveChild = item.children.some((child: any) =>
+                                                        isActive(child.to)
+                                                    );
+                                                    return (
+
+                                                        <AccordionItem
+                                                            value={item.id}
+                                                            className={` ${
+                                                                hasActiveChild ? "text-[#00c16a] bg-[#1d293d] py-2 px-3" : "text-[#62748e]  py-2 px-3 transition-colors duration-450"
+                                                            }`}>
+                                                            <AccordionTrigger className="p-0 m-0">
+                                                                <div className="flex items-center gap-1.5">
+                                                                    <DynamicIcon iconName={item.icon}/>
+                                                                    {item.label}
                                                                 </div>
-                                                            </NavLink>
-                                                        ))}
-                                                    </AccordionContent>
-                                                </AccordionItem>
-                                            );
-                                        })()}
-                                    </>
-                                )}
+                                                            </AccordionTrigger>
+                                                            <AccordionContent className="bg-[#1d293d]">
+                                                                <div className="my-3 flex gap-3 flex-col pt-3 border-t">
+                                                                    {item.children.map((child: any, index: number) => (
+                                                                        <NavLink
+                                                                            onClick={() => setOpen(false)}
+                                                                            caseSensitive
+                                                                            key={index}
+                                                                            className={({isActive}) =>
+                                                                                cn('app-nav-link', {
+                                                                                    'text-[#00c16a]': isActive,
+                                                                                    'text-white hover:text-[#00c16a]': !isActive,
+                                                                                })
+                                                                            }
+                                                                            to={child.to}
+                                                                        >
+                                                                            <div
+                                                                                className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
+                                                                                <DynamicIcon iconName={child.icon}/>
+                                                                                {child.label}
+                                                                            </div>
+                                                                        </NavLink>
+                                                                    ))}
+                                                                </div>
+                                                            </AccordionContent>
+                                                        </AccordionItem>
+                                                    );
+                                                })()}
+                                            </>
+                                        )}
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-                </Accordion>
+                        </Accordion>
+                        <SheetFooter>
+                            
+                        </SheetFooter>
+                    </SheetContent>
+                </Sheet>
             </nav>
         </>
 

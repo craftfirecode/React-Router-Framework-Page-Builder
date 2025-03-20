@@ -212,3 +212,7 @@ body {
 button {
     cursor: pointer;
 }
+
+.container {
+    @apply px-[15px]
+}
