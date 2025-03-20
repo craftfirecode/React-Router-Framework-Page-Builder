@@ -5,11 +5,11 @@ import {Link} from "react-router";
 
 export const ContentImage = ({data}: { data: any }) => {
     return (
-        <div className={'grid gap-3 sm:grid-cols-1 md:grid-cols-2 items-center'}>
+        <div className={'grid gap-3 md:grid-cols-1 lg:grid-cols-2 items-center'}>
             <div>
                 <Image data={data}/>
             </div>
-            <div className={data.revert ? 'order-last' : 'order-last md:order-first'}>
+            <div className={data.revert ? 'order-last' : 'md:order-last lg:order-first'}>
                 <Content data={data}/>
                 {data.button && (
                     <div className="mt-5">
