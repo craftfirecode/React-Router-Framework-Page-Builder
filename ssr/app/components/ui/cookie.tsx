@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Button} from "~/components/ui/button";
+import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "~/components/ui/collapsible";
 import {Switch} from "~/components/ui/switch";
 import {Label} from "~/components/ui/label";
+import {InfoIcon} from "lucide-react";
 
 interface Preferences {
     necessary: boolean;
@@ -88,8 +90,17 @@ const CookieBanner: React.FC<CookieBannerProps> = ({onAccept}) => {
             <div>{t.message}</div>
             <div className="d-flex flex-column my-3">
                 <div className="flex items-center space-x-2">
-                    <Switch id="airplane-mode"/>
-                    <Label htmlFor="airplane-mode">Airplane Mode</Label>
+                    <Collapsible>
+                        <div className="flex gap-3 items-center">
+                            <Switch disabled checked id="airplane-mode"/>
+                            <Label htmlFor="airplane-mode">{t.necessary}</Label>
+                            <CollapsibleTrigger><InfoIcon/></CollapsibleTrigger>
+                        </div>
+                        <CollapsibleContent>
+                            Yes. Free to use for personal and commercial projects. No attribution
+                            required.
+                        </CollapsibleContent>
+                    </Collapsible>
                 </div>
                 <div className="form-check">
                     <input
