@@ -15,6 +15,7 @@ import {getSettingsData} from "~/api/strapi-api";
 import {Navigation} from "~/components/ui/navigation";
 import {TopBreadcrumb} from "~/components/ui/top-breadcrumb";
 import {Footer} from "~/components/ui/footer";
+import Cookie from "~/components/ui/cookie";
 
 export async function loader() {
     try {
@@ -30,6 +31,9 @@ export function Layout({children}: { children: React.ReactNode }) {
     const loaderData: any = useLoaderData<Route.ComponentProps>();
     const isPortfolioPage = /^\/portfolio(\/|$)/.test(location.pathname);
 
+    const acceptCookie = (e: {}) => {
+        console.log(e)
+    }
     return (
         <html lang="en">
         <head>
@@ -49,6 +53,7 @@ export function Layout({children}: { children: React.ReactNode }) {
             <div className="flex-1 flex flex-col">
                 {children}
             </div>
+            <Cookie onAccept={(e) => acceptCookie(e)}/>
             <Footer/>
         </div>
         <ScrollRestoration/>
