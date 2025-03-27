@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Button} from "~/components/ui/button";
+import {Switch} from "~/components/ui/switch";
+import {Label} from "~/components/ui/label";
 
 interface Preferences {
     necessary: boolean;
@@ -85,6 +87,10 @@ const CookieBanner: React.FC<CookieBannerProps> = ({onAccept}) => {
             className="fixed bottom-0 text-black start-0 end-0 bg-white border-top p-3">
             <div>{t.message}</div>
             <div className="d-flex flex-column my-3">
+                <div className="flex items-center space-x-2">
+                    <Switch id="airplane-mode"/>
+                    <Label htmlFor="airplane-mode">Airplane Mode</Label>
+                </div>
                 <div className="form-check">
                     <input
                         type="checkbox"
