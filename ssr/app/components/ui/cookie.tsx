@@ -67,15 +67,11 @@ const CookieBanner: React.FC<CookieBannerProps> = ({onAccept}) => {
         onAccept(declinedPreferences);
     };
 
-    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSwitchChange = (checked: boolean, name: string) => {
         setPreferences({
             ...preferences,
-            [e.target.name]: e.target.checked,
+            [name]: checked,
         });
-    };
-
-    const handleLanguageChange = (lang: 'en' | 'de') => {
-        setLanguage(lang);
     };
 
     if (!showBanner) {
@@ -85,61 +81,50 @@ const CookieBanner: React.FC<CookieBannerProps> = ({onAccept}) => {
     const t = translations[language];
 
     return (
-        <div
-            className="fixed bottom-0 text-black start-0 end-0 bg-white border-top p-3">
+        <div className="fixed bottom-0 text-black start-0 end-0 bg-white border-top p-3">
             <div>{t.message}</div>
-            <div className="d-flex flex-column my-3">
-                <div className="flex items-center space-x-2">
+            <div className="my-3">
+                <div>
                     <Collapsible>
                         <div className="flex gap-3 items-center">
-                            <Switch disabled checked id="airplane-mode"/>
-                            <Label htmlFor="airplane-mode">{t.necessary}</Label>
+                            <Switch disabled checked id="necessary-switch"/>
+                            <Label htmlFor="necessary-switch">{t.necessary}</Label>
                             <CollapsibleTrigger><InfoIcon/></CollapsibleTrigger>
                         </div>
                         <CollapsibleContent>
-                            Yes. Free to use for personal and commercial projects. No attribution
-                            required.
+                            Yes. Free to use for personal and commercial projects. No attribution required.
                         </CollapsibleContent>
                     </Collapsible>
-                </div>
-                <div className="form-check">
-                    <input
-                        type="checkbox"
-                        name="necessary"
-                        checked={preferences.necessary}
-                        disabled
-                        className="form-check-input"
-                        id="necessary-checkbox"
-                    />
-                    <label className="form-check-label" htmlFor="necessary-checkbox">
-                        {t.necessary}
-                    </label>
-                </div>
-                <div className="form-check">
-                    <input
-                        type="checkbox"
-                        name="analytics"
-                        checked={preferences.analytics}
-                        onChange={handleCheckboxChange}
-                        className="form-check-input"
-                        id="analytics-checkbox"
-                    />
-                    <label className="form-check-label" htmlFor="analytics-checkbox">
-                        {t.analytics}
-                    </label>
-                </div>
-                <div className="form-check">
-                    <input
-                        type="checkbox"
-                        name="marketing"
-                        checked={preferences.marketing}
-                        onChange={handleCheckboxChange}
-                        className="form-check-input"
-                        id="marketing-checkbox"
-                    />
-                    <label htmlFor="marketing-checkbox">
-                        {t.marketing}
-                    </label>
+                    <Collapsible>
+                        <div className="flex gap-3 items-center">
+                            <Switch
+                                checked={preferences.analytics}
+                                name="analytics"
+                                onCheckedChange={(checked) => handleSwitchChange(checked, 'analytics')}
+                                id="analytics-switch"
+                            />
+                            <Label htmlFor="analytics-switch">{t.analytics}</Label>
+                            <CollapsibleTrigger><InfoIcon/></CollapsibleTrigger>
+                        </div>
+                        <CollapsibleContent>
+                            Yes. Free to use for personal and commercial projects. No attribution required.
+                        </CollapsibleContent>
+                    </Collapsible>
+                    <Collapsible>
+                        <div className="flex gap-3 items-center">
+                            <Switch
+                                checked={preferences.marketing}
+                                name="marketing"
+                                onCheckedChange={(checked) => handleSwitchChange(checked, 'marketing')}
+                                id="marketing-switch"
+                            />
+                            <Label htmlFor="marketing-switch">{t.marketing}</Label>
+                            <CollapsibleTrigger><InfoIcon/></CollapsibleTrigger>
+                        </div>
+                        <CollapsibleContent>
+                            Yes. Free to use for personal and commercial projects. No attribution required.
+                        </CollapsibleContent>
+                    </Collapsible>
                 </div>
             </div>
             <div className="flex gap-2">
