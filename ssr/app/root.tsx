@@ -1,3 +1,4 @@
+import React, {useEffect} from "react";
 import {
     isRouteErrorResponse,
     Links,
@@ -10,7 +11,6 @@ import {
 } from "react-router";
 import type {Route} from "./+types/root";
 import "./app.css";
-import React from "react";
 import {getSettingsData} from "~/api/strapi-api";
 import {Navigation} from "~/components/ui/navigation";
 import {TopBreadcrumb} from "~/components/ui/top-breadcrumb";
@@ -31,9 +31,21 @@ export function Layout({children}: { children: React.ReactNode }) {
     const loaderData: any = useLoaderData<Route.ComponentProps>();
     const isPortfolioPage = /^\/portfolio(\/|$)/.test(location.pathname);
 
-    const acceptCookie = (e: {}) => {
-        console.log(e)
-    }
+    useEffect(() => {
+        const checkCookieConsent = () => {
+            const consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
+                // Handle case where there is no consent
+                console.log("No cookie consent found");
+            } else {
+                // Handle case where consent is found
+                console.log("Cookie consent found:", JSON.parse(consent));
+            }
+        };
+
+        checkCookieConsent();
+    }, [location]);
+
     return (
         <html lang="en">
         <head>
@@ -53,7 +65,7 @@ export function Layout({children}: { children: React.ReactNode }) {
             <div className="flex-1 flex flex-col">
                 {children}
             </div>
-            <Cookie onAccept={(e) => acceptCookie(e)}/>
+            <Cookie/>
             <Footer/>
         </div>
         <ScrollRestoration/>
