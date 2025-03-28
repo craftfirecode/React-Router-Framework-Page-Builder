@@ -42,9 +42,12 @@ export function Layout({children}: { children: React.ReactNode }) {
                 console.log("Cookie consent found:", JSON.parse(consent));
             }
         };
-
         checkCookieConsent();
     }, [location]);
+
+    const onAccept = (preferences: {}) => {
+        console.log("preferences", preferences);
+    }
 
     return (
         <html lang="en">
@@ -65,7 +68,7 @@ export function Layout({children}: { children: React.ReactNode }) {
             <div className="flex-1 flex flex-col">
                 {children}
             </div>
-            <Cookie/>
+            <Cookie onAccept={(preferences) => onAccept(preferences)}/>
             <Footer/>
         </div>
         <ScrollRestoration/>

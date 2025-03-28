@@ -12,7 +12,7 @@ interface Preferences {
 }
 
 interface CookieBannerProps {
-    onAccept?: (preferences: Preferences) => void;
+    onAccept: (preferences: Preferences) => void;
 }
 
 const translations = {
