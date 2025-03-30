@@ -44,6 +44,14 @@ export async function getPostListData() {
     return fetchData(`/api/posts?customPopulate=nested`);
 }
 
+export async function getBlogData(urlFilter: string) {
+    return fetchData(`/api/blogs?filters[url][$eq]=${urlFilter}&customPopulate=nested`);
+}
+
+export async function getBlogListData() {
+    return fetchData(`/api/blogs?customPopulate=nested`);
+}
+
 export async function getSettingsData() {
     return fetchData(`/api/navigation?customPopulate=nested`);
 }

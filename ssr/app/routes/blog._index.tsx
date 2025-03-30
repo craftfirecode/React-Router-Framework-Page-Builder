@@ -1,19 +1,19 @@
-import {getPostListData} from "~/api/strapi-api";
-import type {Route} from "./+types/portfolio._index";
+import type {Route} from "./+types/blog._index";
 import {Link} from "react-router";
 import {Button} from "~/components/ui/button";
 import {Badge} from "~/components/ui/badge";
+import {getBlogListData} from "~/api/strapi-api";
 
 export function meta({params}: Route.MetaArgs) {
     return [
-        {title: `CRAFTFIRE - Portfolio`},
+        {title: `CRAFTFIRE - Blog`},
         {name: "description", content: ""},
     ];
 }
 
 export async function loader() {
     try {
-        return await getPostListData();
+        return await getBlogListData();
     } catch (error) {
         return {data: null};
     }
@@ -26,7 +26,7 @@ export default function Portfolio_index({loaderData}: Route.ComponentProps) {
                 {loaderData.map((item: any, index: string | number) => (
                     <div className="border-fx">
                         <div className="bg-black h-[100%]">
-                            <Link to={"/portfolio/" + item.url}>
+                            <Link to={"/blog/" + item.url}>
                                 <img src={import.meta.env.VITE_PUBLIC_STRAPI_API_URL + item.thumbnail.url}
                                      className="w-full h-48 object-cover hover:grayscale" alt=""/>
                             </Link>
@@ -38,7 +38,7 @@ export default function Portfolio_index({loaderData}: Route.ComponentProps) {
                                 <div className="mb-8">
                                     {item.description}
                                 </div>
-                                <Link to={"/portfolio/" + item.url}>
+                                <Link to={"/blog/" + item.url}>
                                     <Button>Jetzt Lesen</Button>
                                 </Link>
                             </div>

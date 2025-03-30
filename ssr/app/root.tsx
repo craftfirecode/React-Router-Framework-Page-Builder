@@ -15,7 +15,6 @@ import {getSettingsData} from "~/api/strapi-api";
 import {Navigation} from "~/components/ui/navigation";
 import {TopBreadcrumb} from "~/components/ui/top-breadcrumb";
 import {Footer} from "~/components/ui/footer";
-import Cookie from "~/components/ui/cookie";
 
 export async function loader() {
     try {
@@ -30,23 +29,24 @@ export function Layout({children}: { children: React.ReactNode }) {
     const location = useLocation();
     const loaderData: any = useLoaderData<Route.ComponentProps>();
     const isPortfolioPage = /^\/portfolio(\/|$)/.test(location.pathname);
+    const isBlogPage = /^\/blog(\/|$)/.test(location.pathname);
 
     useEffect(() => {
         const checkCookieConsent = () => {
             const consent = localStorage.getItem('cookieConsent');
             if (!consent) {
                 // Handle case where there is no consent
-                console.log("No cookie consent found");
+                // console.log("No cookie consent found");
             } else {
                 // Handle case where consent is found
-                console.log("Cookie consent found:", JSON.parse(consent));
+                // console.log("Cookie consent found:", JSON.parse(consent));
             }
         };
         checkCookieConsent();
     }, [location]);
 
     const onAccept = (preferences: {}) => {
-        console.log("preferences", preferences);
+        //console.log("preferences", preferences);
     }
 
     return (
@@ -65,10 +65,17 @@ export function Layout({children}: { children: React.ReactNode }) {
                     <TopBreadcrumb/>
                 </div>
             )}
+            {isBlogPage && (
+                <div className="container mx-auto my-5">
+                    <TopBreadcrumb/>
+                </div>
+            )}
             <div className="flex-1 flex flex-col">
                 {children}
             </div>
+            {/*
             <Cookie onAccept={(preferences) => onAccept(preferences)}/>
+            */}
             <Footer/>
         </div>
         <ScrollRestoration/>
