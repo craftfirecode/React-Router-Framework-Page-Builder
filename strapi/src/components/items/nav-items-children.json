@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_items_nav_items_children",
+  "info": {
+    "displayName": "Nav-items-children",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    }
+  }
+}

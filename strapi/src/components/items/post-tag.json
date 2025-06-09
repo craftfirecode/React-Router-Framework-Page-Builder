@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_items_post_tags",
+  "info": {
+    "displayName": "post-tag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "tag": {
+      "type": "enumeration",
+      "enum": [
+        "UX /UI-Design",
+        "UI-Design",
+        "UX-Design",
+        "Frontend",
+        "Full Stack",
+        "UX /UI-Design & Prototype",
+        "UI-Design & Prototype",
+        "CEO",
+        "Full-Cycle-Design & Full-Stack Development"
+      ]
+    }
+  }
+}
