@@ -23,7 +23,7 @@ export const Navigation = ({data}: { data: any }) => {
     return (
         <>
             <nav className="container hidden mx-auto md:flex items-center gap-2 pt-5">
-                <Link to="/">
+                <Link to="/" aria-label="Home">
                     <div className="me-3">
                         <svg className="brand" width="auto" height="75" viewBox="0 0 57 75" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
