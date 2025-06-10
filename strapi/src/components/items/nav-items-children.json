@@ -12,10 +12,6 @@
     "icon": {
       "type": "string"
     },
-    "url": {
-      "type": "string",
-      "unique": true
-    },
     "page": {
       "type": "relation",
       "relation": "oneToOne",
@@ -25,6 +21,9 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "url": {
+      "type": "string"
     }
   }
 }

@@ -79,7 +79,9 @@ export const Navigation = ({ data }: { data: any }) => {
                   <Menu.Root openOnHover>
                     {(() => {
                       const hasActiveChild = item.children.some((child: any) =>
-                        isActive(item.url + "/" + child.url)
+                        child.sub.some((sub: any) =>
+                          isActive(item.url + "/" + sub.url)
+                        )
                       );
                       return (
                         <>
@@ -104,24 +106,36 @@ export const Navigation = ({ data }: { data: any }) => {
                                   <ArrowSvg />
                                 </Menu.Arrow>
                                 {item.children.map(
-                                  (child: any, index: number) =>
-                                    child.invisible === false && (
-                                      <NavLink
-                                        caseSensitive
-                                        key={index}
-                                        className={({ isActive }) =>
-                                          isActive
-                                            ? "app-nav-link text-[#00c16a] bg-[#f1f5f9]"
-                                            : "app-nav-link text-[#62748e] hover:text-black"
-                                        }
-                                        to={item.url + "/" + child.url}
-                                      >
-                                        <Menu.Item className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
-                                          <DynamicIcon iconName={child.icon} />
-                                          {child.label}
-                                        </Menu.Item>
-                                      </NavLink>
-                                    )
+                                  (child: any, index: number) => (
+                                    <>
+                                      {child.category}
+                                      {child.sub.map(
+                                        (sub: any, index: number) => (
+                                          <>
+                                            {sub.invisible === false && (
+                                              <NavLink
+                                                caseSensitive
+                                                key={index}
+                                                className={({ isActive }) =>
+                                                  isActive
+                                                    ? "app-nav-link text-[#00c16a] bg-[#f1f5f9]"
+                                                    : "app-nav-link text-[#62748e] hover:text-black"
+                                                }
+                                                to={item.url + "/" + sub.url}
+                                              >
+                                                <Menu.Item className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
+                                                  <DynamicIcon
+                                                    iconName={sub.icon}
+                                                  />
+                                                  {sub.label}
+                                                </Menu.Item>
+                                              </NavLink>
+                                            )}
+                                          </>
+                                        )
+                                      )}
+                                    </>
+                                  )
                                 )}
                               </Menu.Popup>
                             </Menu.Positioner>
@@ -200,7 +214,10 @@ export const Navigation = ({ data }: { data: any }) => {
                       <>
                         {(() => {
                           const hasActiveChild = item.children.some(
-                            (child: any) => isActive(item.url + "/" + child.url)
+                            (child: any) =>
+                              child.sub.some((sub: any) =>
+                                isActive(item.url + "/" + sub.url)
+                              )
                           );
                           return (
                             <AccordionItem
@@ -222,29 +239,30 @@ export const Navigation = ({ data }: { data: any }) => {
                                   {item.children.map(
                                     (child: any, index: number) => (
                                       <>
-                                        {child.invisible === false && (
-                                          <>
-                                            <NavLink
-                                              onClick={() => setOpen(false)}
-                                              caseSensitive
-                                              key={index}
-                                              className={({ isActive }) =>
-                                                cn("app-nav-link", {
-                                                  "text-[#00c16a]": isActive,
-                                                  "text-white hover:text-[#00c16a]":
-                                                    !isActive,
-                                                })
-                                              }
-                                              to={item.url + "/" + child.url}
-                                            >
-                                              <div className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
-                                                <DynamicIcon
-                                                  iconName={child.icon}
-                                                />
-                                                {child.label}
-                                              </div>
-                                            </NavLink>
-                                          </>
+                                        <h6>{child.category}</h6>
+                                        {child.sub.map(
+                                          (sub: any, index: number) => (
+                                            <>
+                                              {sub.invisible === false && (
+                                                <NavLink
+                                                  onClick={() => setOpen(false)}
+                                                  caseSensitive
+                                                  key={index}
+                                                  className={({ isActive }) =>
+                                                    isActive
+                                                      ? "app-nav-link text-[#00c16a] bg-[#f1f5f9]"
+                                                      : "app-nav-link text-[#62748e] hover:text-black"
+                                                  }
+                                                  to={item.url + "/" + sub.url}
+                                                >
+                                                  <DynamicIcon
+                                                    iconName={sub.icon}
+                                                  />
+                                                  {sub.label}
+                                                </NavLink>
+                                              )}
+                                            </>
+                                          )
                                         )}
                                       </>
                                     )

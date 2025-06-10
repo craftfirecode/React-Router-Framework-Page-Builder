@@ -17,11 +17,6 @@
       "type": "string",
       "unique": true
     },
-    "children": {
-      "type": "component",
-      "repeatable": true,
-      "component": "items.nav-items-children"
-    },
     "page": {
       "type": "relation",
       "relation": "oneToOne",
@@ -32,7 +27,7 @@
       "default": false,
       "required": true
     },
-    "Subnavigation": {
+    "children": {
       "type": "component",
       "repeatable": true,
       "component": "items.subnavigation"

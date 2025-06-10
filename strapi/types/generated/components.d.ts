@@ -122,14 +122,13 @@ export interface ItemsNavItems extends Struct.ComponentSchema {
     icon: 'apps';
   };
   attributes: {
-    children: Schema.Attribute.Component<'items.nav-items-children', true>;
+    children: Schema.Attribute.Component<'items.subnavigation', true>;
     icon: Schema.Attribute.String;
     invisible: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String;
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
-    Subnavigation: Schema.Attribute.Component<'items.subnavigation', true>;
     url: Schema.Attribute.String & Schema.Attribute.Unique;
   };
 }
@@ -147,7 +146,7 @@ export interface ItemsNavItemsChildren extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String;
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
-    url: Schema.Attribute.String & Schema.Attribute.Unique;
+    url: Schema.Attribute.String;
   };
 }
 
@@ -177,6 +176,7 @@ export interface ItemsPostTag extends Struct.ComponentSchema {
 export interface ItemsSubnavigation extends Struct.ComponentSchema {
   collectionName: 'components_items_subnavigations';
   info: {
+    description: '';
     displayName: 'Subnavigation';
   };
   attributes: {
