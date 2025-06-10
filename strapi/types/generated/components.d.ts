@@ -129,6 +129,7 @@ export interface ItemsNavItems extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String;
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
+    Subnavigation: Schema.Attribute.Component<'items.subnavigation', true>;
     url: Schema.Attribute.String & Schema.Attribute.Unique;
   };
 }
@@ -173,6 +174,17 @@ export interface ItemsPostTag extends Struct.ComponentSchema {
   };
 }
 
+export interface ItemsSubnavigation extends Struct.ComponentSchema {
+  collectionName: 'components_items_subnavigations';
+  info: {
+    displayName: 'Subnavigation';
+  };
+  attributes: {
+    category: Schema.Attribute.String;
+    sub: Schema.Attribute.Component<'items.nav-items-children', true>;
+  };
+}
+
 export interface MetaMeta extends Struct.ComponentSchema {
   collectionName: 'components_meta_metas';
   info: {
@@ -199,6 +211,7 @@ declare module '@strapi/strapi' {
       'items.nav-items': ItemsNavItems;
       'items.nav-items-children': ItemsNavItemsChildren;
       'items.post-tag': ItemsPostTag;
+      'items.subnavigation': ItemsSubnavigation;
       'meta.meta': MetaMeta;
     }
   }

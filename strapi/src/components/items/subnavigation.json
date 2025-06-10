@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_items_subnavigations",
+  "info": {
+    "displayName": "Subnavigation"
+  },
+  "options": {},
+  "attributes": {
+    "sub": {
+      "type": "component",
+      "repeatable": true,
+      "component": "items.nav-items-children"
+    },
+    "category": {
+      "type": "string"
+    }
+  }
+}
