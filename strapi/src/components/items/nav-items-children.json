@@ -12,11 +12,14 @@
     "icon": {
       "type": "string"
     },
-    "description": {
-      "type": "string"
+    "url": {
+      "type": "string",
+      "unique": true
     },
-    "to": {
-      "type": "string"
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
     }
   }
 }

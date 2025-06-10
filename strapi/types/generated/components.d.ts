@@ -123,10 +123,10 @@ export interface ItemsNavItems extends Struct.ComponentSchema {
   };
   attributes: {
     children: Schema.Attribute.Component<'items.nav-items-children', true>;
-    description: Schema.Attribute.String;
     icon: Schema.Attribute.String;
     label: Schema.Attribute.String;
-    to: Schema.Attribute.String;
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
+    url: Schema.Attribute.String & Schema.Attribute.Unique;
   };
 }
 
@@ -137,10 +137,10 @@ export interface ItemsNavItemsChildren extends Struct.ComponentSchema {
     displayName: 'Nav-items-children';
   };
   attributes: {
-    description: Schema.Attribute.String;
     icon: Schema.Attribute.String;
     label: Schema.Attribute.String;
-    to: Schema.Attribute.String;
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
+    url: Schema.Attribute.String & Schema.Attribute.Unique;
   };
 }
 

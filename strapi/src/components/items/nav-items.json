@@ -10,19 +10,22 @@
     "label": {
       "type": "string"
     },
-    "description": {
-      "type": "string"
-    },
     "icon": {
       "type": "string"
     },
-    "to": {
-      "type": "string"
+    "url": {
+      "type": "string",
+      "unique": true
     },
     "children": {
       "type": "component",
       "repeatable": true,
       "component": "items.nav-items-children"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
     }
   }
 }

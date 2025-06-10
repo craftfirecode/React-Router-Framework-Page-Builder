@@ -55,7 +55,7 @@ export const Builder = ({data}: any) => {
 
     return (
         <>
-            {data[0].zone.map((component: any, index: any) => (
+            {data.zone.map((component: any, index: any) => (
                 <React.Fragment key={index}>
                     {renderComponent(component)}
                 </React.Fragment>

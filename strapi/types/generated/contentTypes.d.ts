@@ -416,7 +416,7 @@ export interface ApiNavigationNavigation extends Struct.SingleTypeSchema {
   collectionName: 'navigations';
   info: {
     description: '';
-    displayName: 'navigation';
+    displayName: 'Navigation';
     pluralName: 'navigations';
     singularName: 'navigation';
   };

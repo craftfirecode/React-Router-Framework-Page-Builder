@@ -13,7 +13,6 @@ export const PostList = ({data}: { data: any }) => {
     useEffect(() => {
         const fetchData = async () => {
             const res = await getPostListData();
-            console.log('dataPosts', res)
             setDataPosts(res);
         };
 

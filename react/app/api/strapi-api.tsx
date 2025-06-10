@@ -1,3 +1,5 @@
+import {findByCriteria} from "~/lib/helper";
+
 const headers = {
     Authorization: `Bearer ${import.meta.env.VITE_PUBLIC_STRAPI_API_KEY}`,
 };
@@ -54,4 +56,27 @@ export async function getBlogListData() {
 
 export async function getSettingsData() {
     return fetchData(`/api/navigation?customPopulate=nested`);
+}
+
+export async function getPageByHref(url: string) {
+    const apiUrl = import.meta.env.VITE_PUBLIC_STRAPI_API_URL;
+    const response = await fetch(`${apiUrl}/api/navigation?populate[top][populate]=*`, {
+        headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_PUBLIC_STRAPI_API_KEY}`
+        }
+    });
+    const res = await response.json();
+    const data = res.data;
+    if (!data || !data.top) return null;
+    return findByCriteria(data.top, {url: url});
+}
+
+export async function getPageDataByDocumentID(documentId: string) {
+    const apiUrl = import.meta.env.VITE_PUBLIC_STRAPI_API_URL;
+    const response = await fetch(`${apiUrl}/api/pages?filters[documentId][$eq]=${documentId}&customPopulate=nested`, {
+        headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_PUBLIC_STRAPI_API_KEY}`
+        }
+    });
+    return await response.json();
 }

@@ -1,4 +1,4 @@
-import {getPageData} from "~/api/strapi-api";
+import {getPageByHref, getPageData, getPageDataByDocumentID} from "~/api/strapi-api";
 import type {Route} from "./+types/$id";
 import {Builder} from "~/components/ui/builder";
 

@@ -46,7 +46,7 @@ export const Navigation = ({data}: { data: any }) => {
                                         ? "text-[#00c16a] bg-[#1d293d] rounded-md py-2 px-3"
                                         : "text-light py-2 px-3 transition-colors duration-450 hover:text-[#00c16a]"
                                 }
-                                to={item.to}
+                                to={item.url}
                             >
                                 <div className="flex items-center gap-1.5">
                                     <DynamicIcon iconName={item.icon}/>
@@ -57,7 +57,7 @@ export const Navigation = ({data}: { data: any }) => {
                             <Menu.Root openOnHover>
                                 {(() => {
                                     const hasActiveChild = item.children.some((child: any) =>
-                                        isActive(child.to)
+                                        isActive(child.url)
                                     );
 
                                     return (
@@ -79,6 +79,18 @@ export const Navigation = ({data}: { data: any }) => {
                                                             className="data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90 data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180">
                                                             <ArrowSvg/>
                                                         </Menu.Arrow>
+                                                        <h1>Headline</h1>
+                                                        <div className="flex grid grid-cols-6">
+                                                            <div>
+                                                                <h4>Demo</h4>
+                                                            </div>
+                                                            <div>
+                                                                <h4>Demo</h4>
+                                                            </div>
+                                                            <div>
+                                                                <h4>Demo</h4>
+                                                            </div>
+                                                        </div>
                                                         {item.children.map((child: any, index: number) => (
                                                             <NavLink
                                                                 caseSensitive
@@ -88,7 +100,7 @@ export const Navigation = ({data}: { data: any }) => {
                                                                         ? "app-nav-link text-[#00c16a] bg-[#f1f5f9]"
                                                                         : "app-nav-link text-[#62748e] hover:text-black"
                                                                 }
-                                                                to={child.to}
+                                                                to={child.url}
                                                             >
                                                                 <Menu.Item
                                                                     className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
@@ -147,7 +159,7 @@ export const Navigation = ({data}: { data: any }) => {
                                                         ? "text-[#00c16a] flex bg-[#1d293d] py-2 px-3"
                                                         : "text-[#62748e] flex py-2 px-3 transition-colors duration-450 hover:text-[#00c16a]"
                                                 }
-                                                to={item.to}
+                                                to={item.url}
                                             >
                                                 <div className="flex items-center gap-1.5">
                                                     <DynamicIcon iconName={item.icon}/>
