@@ -164,7 +164,10 @@ export const Navigation = ({ data }: { data: any }) => {
           </div>
         </div>
         <Sheet open={open}>
-          <SheetContent onPointerDownOutside={() => setOpen(false)}>
+          <SheetContent
+            className="bg-white"
+            onPointerDownOutside={() => setOpen(false)}
+          >
             <SheetHeader>
               <SheetTitle>CRAFTFIRE</SheetTitle>
               <SheetDescription></SheetDescription>
