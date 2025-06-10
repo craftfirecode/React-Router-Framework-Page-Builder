@@ -20,6 +20,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::page.page"
+    },
+    "invisible": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

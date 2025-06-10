@@ -124,6 +124,9 @@ export interface ItemsNavItems extends Struct.ComponentSchema {
   attributes: {
     children: Schema.Attribute.Component<'items.nav-items-children', true>;
     icon: Schema.Attribute.String;
+    invisible: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String;
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
     url: Schema.Attribute.String & Schema.Attribute.Unique;
@@ -138,6 +141,9 @@ export interface ItemsNavItemsChildren extends Struct.ComponentSchema {
   };
   attributes: {
     icon: Schema.Attribute.String;
+    invisible: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String;
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
     url: Schema.Attribute.String & Schema.Attribute.Unique;
