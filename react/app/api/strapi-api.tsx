@@ -58,7 +58,7 @@ export async function getSettingsData() {
     return fetchData(`/api/navigation?customPopulate=nested`);
 }
 
-export async function getPageByHref(url: string) {
+export async function getPageByHref(url: string | string[]) {
     const apiUrl = import.meta.env.VITE_PUBLIC_STRAPI_API_URL;
     const response = await fetch(`${apiUrl}/api/navigation?populate[top][populate]=*`, {
         headers: {
@@ -69,6 +69,35 @@ export async function getPageByHref(url: string) {
     const data = res.data;
     if (!data || !data.top) return null;
     return findByCriteria(data.top, {url: url});
+}
+
+export async function getPageIndexData(url: string | string[]) {
+    const apiUrl = import.meta.env.VITE_PUBLIC_STRAPI_API_URL;
+    const response = await fetch(`${apiUrl}/api/navigation?populate[index][populate]=*`, {
+        headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_PUBLIC_STRAPI_API_KEY}`
+        }
+    });
+    const res = await response.json();
+    const data = res.data;
+    const a = await getPageDataByDocumentID(data.index.documentId);
+    return a || null;
+}
+
+
+export async function getPageByHrefSubpage(segment: string | string[]) {
+    const apiUrl = import.meta.env.VITE_PUBLIC_STRAPI_API_URL;
+    const response = await fetch(`${apiUrl}/api/navigation?populate[top][populate][page][populate]=*&populate[top][populate][children][populate]=*`, {
+        headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_PUBLIC_STRAPI_API_KEY}`
+        }
+    });
+    const res = await response.json();
+    const data = res.data;
+    if (!data || !data.top) return null;
+
+    const startWith = findByCriteria(data.top, {url: segment[0], 'has:children': true});
+    return findByCriteria(startWith.children, {url: segment[1]});
 }
 
 export async function getPageDataByDocumentID(documentId: string) {

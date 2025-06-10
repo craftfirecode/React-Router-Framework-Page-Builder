@@ -15,6 +15,11 @@
       "type": "component",
       "repeatable": true,
       "component": "items.nav-items"
+    },
+    "index": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
     }
   }
 }

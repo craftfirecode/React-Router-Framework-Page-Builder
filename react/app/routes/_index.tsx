@@ -1,10 +1,12 @@
-import {getPageData} from "~/api/strapi-api";
+import {getPageIndexData} from "~/api/strapi-api";
 import type {Route} from "./+types/_index";
 import {Builder} from "~/components/ui/builder";
 
 export async function loader({params}: Route.LoaderArgs) {
     try {
-        return await getPageData("index");
+        const data = await getPageIndexData();
+        return data.data[0];
+        console.log(data);
     } catch (error) {
         return {data: null};
     }
@@ -12,8 +14,8 @@ export async function loader({params}: Route.LoaderArgs) {
 
 export function meta({params, data}: Route.MetaArgs & { data: any }) {
     return [
-        {title: `CRAFTFIRE - ${data[0].settings.title}`},
-        {description: data[0].settings.description},
+        {title: `CRAFTFIRE - ${data.settings.title}`},
+        {description: data.settings.description},
     ];
 }
 

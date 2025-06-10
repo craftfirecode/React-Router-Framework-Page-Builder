@@ -1,13 +1,16 @@
-import {getPageByHref, getPageDataByDocumentID} from "~/api/strapi-api";
-import type {Route} from "./+types/$id";
+import type {Route} from "./+types/$segment.$subsegment";
+import {getPageByHrefSubpage, getPageDataByDocumentID} from "~/api/strapi-api";
 import {Builder} from "~/components/ui/builder";
-import {findByCriteria} from "~/lib/helper";
 
-export async function loader({params}: Route.LoaderArgs) {
+export async function loader({request, params}: Route.LoaderArgs) {
     try {
-        const page = await getPageByHref(params.id);
+        const url = new URL(request.url);
+        const segments = url.pathname.split("/").filter(Boolean);
+        const page = await getPageByHrefSubpage(segments);
         const res = await getPageDataByDocumentID(page.page.documentId);
+        console.log(res.data[0]);
         return res.data[0];
+
     } catch (error) {
         return {data: null};
     }
