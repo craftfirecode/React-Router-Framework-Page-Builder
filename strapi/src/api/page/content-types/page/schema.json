@@ -11,10 +11,11 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "url": {
+    "indicator": {
       "type": "string",
       "unique": true,
-      "required": true
+      "required": true,
+      "private": true
     },
     "zone": {
       "type": "dynamiczone",
