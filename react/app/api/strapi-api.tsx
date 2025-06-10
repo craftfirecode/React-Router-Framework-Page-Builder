@@ -79,7 +79,7 @@ export async function getPageByHref(url: string | string[]) {
   return findByCriteria(data.top, { url: url });
 }
 
-export async function getPageIndexData(url: string | string[]) {
+export async function getPageIndexData() {
   const apiUrl = import.meta.env.VITE_PUBLIC_STRAPI_API_URL;
   const response = await fetch(
     `${apiUrl}/api/navigation?populate[index][populate]=*`,
