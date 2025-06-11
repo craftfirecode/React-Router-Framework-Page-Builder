@@ -22,7 +22,7 @@ export const NavigationMegaMenu = ({ items }: any) => {
   );
 
   return (
-    <div className="py-5 px-10 gap-10 grid grid-flow-col">
+    <div className="py-5 px-10 gap-15 grid grid-flow-col">
       {items.children.map((child: any, index: number) => (
         <div className="flex flex-col gap-2" key={index}>
           <div className="text-[#6d7682] text-[13px]">{child.category}</div>
@@ -53,6 +53,13 @@ export const NavigationMegaMenu = ({ items }: any) => {
           ))}
         </div>
       ))}
+      <div>
+        <img
+          title="cta"
+          src="https://picsum.photos/200/300"
+          className="w-full h-full object-cover object-top rounded-lg"
+        />
+      </div>
     </div>
   );
 };
