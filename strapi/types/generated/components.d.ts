@@ -123,6 +123,7 @@ export interface ItemsNavItems extends Struct.ComponentSchema {
   };
   attributes: {
     children: Schema.Attribute.Component<'items.subnavigation', true>;
+    cta: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     icon: Schema.Attribute.String;
     invisible: Schema.Attribute.Boolean &
       Schema.Attribute.Required &

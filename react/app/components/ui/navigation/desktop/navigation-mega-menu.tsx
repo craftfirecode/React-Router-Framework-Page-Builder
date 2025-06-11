@@ -21,6 +21,7 @@ export const NavigationMegaMenu = ({ items }: any) => {
     [navigate]
   );
 
+  console.log(items);
   return (
     <div className="py-5 px-10 gap-15 grid grid-flow-col">
       {items.children.map((child: any, index: number) => (
@@ -31,14 +32,16 @@ export const NavigationMegaMenu = ({ items }: any) => {
               {sub.invisible === false && (
                 <NavLink
                   caseSensitive
+                  role="link"
                   key={subIndex}
                   className={({ isActive }) =>
-                    isActive ? " text-[#00c16a]" : ""
+                    isActive ? " text-[#00c16a]" : "menuitem"
                   }
                   to={items.url + "/" + sub.url}
                 >
                   <Menu.Item
                     tabIndex={0}
+                    role="link"
                     className="flex items-center gap-2 py-2"
                     onKeyDown={(event) =>
                       handleKeyDown(items.url + "/" + sub.url, event)
@@ -56,7 +59,7 @@ export const NavigationMegaMenu = ({ items }: any) => {
       <div>
         <img
           title="cta"
-          src="https://picsum.photos/200/300"
+          src={import.meta.env.VITE_PUBLIC_STRAPI_API_URL + items.cta.url}
           className="w-full h-full object-cover object-top rounded-lg"
         />
       </div>

@@ -155,3 +155,11 @@ button {
 a:hover {
     color: #00c16a;
 }
+
+[role="link"]:focus-visible {
+    border: none;
+    outline-offset: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    text-decoration: none;
+}
