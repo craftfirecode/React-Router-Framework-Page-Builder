@@ -1,13 +1,25 @@
-import { NavLink } from "react-router";
 import * as Icons from "lucide-react";
 import { Menu } from "@base-ui-components/react";
+import { useCallback } from "react";
+import { NavLink, useNavigate } from "react-router";
 
 export const NavigationMegaMenu = ({ items }: any) => {
+  const navigate = useNavigate();
+
   function DynamicIcon({ iconName }: { iconName: string }) {
     // @ts-ignore
     const IconComponent: any = Icons[iconName];
     return IconComponent ? <IconComponent /> : null;
   }
+
+  const handleKeyDown = useCallback(
+    (url: string, event: React.KeyboardEvent) => {
+      if (event.key === "Enter") {
+        navigate(url);
+      }
+    },
+    [navigate]
+  );
 
   return (
     <div className="py-3 px-5 gap-10 grid grid-flow-col">
@@ -25,7 +37,13 @@ export const NavigationMegaMenu = ({ items }: any) => {
                   }
                   to={items.url + "/" + sub.url}
                 >
-                  <Menu.Item className="flex items-center gap-2 py-2">
+                  <Menu.Item
+                    tabIndex={0}
+                    className="flex items-center gap-2 py-2"
+                    onKeyDown={(event) =>
+                      handleKeyDown(items.url + "/" + sub.url, event)
+                    }
+                  >
                     <DynamicIcon iconName={sub.icon} />
                     {sub.label}
                   </Menu.Item>

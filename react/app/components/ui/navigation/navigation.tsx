@@ -1,6 +1,7 @@
 import { Link, NavLink, useLocation } from "react-router";
 import React from "react";
 import { Menu } from "@base-ui-components/react";
+import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
 import * as Icons from "lucide-react";
 import { MenuIcon } from "lucide-react";
 import {
@@ -23,7 +24,11 @@ import { NavigationMegaMenu } from "./desktop/navigation-mega-menu";
 export const Navigation = ({ data }: { data: any }) => {
   const location = useLocation();
   const [open, setOpen] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false); // State für das Öffnen/Schließen des Menüs
 
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev); // Menü öffnen oder schließen
+  };
   function DynamicIcon({ iconName }: { iconName: string }) {
     // @ts-ignore
     const IconComponent: any = Icons[iconName];
@@ -64,6 +69,8 @@ export const Navigation = ({ data }: { data: any }) => {
                 {item.children.length === 0 ? (
                   <NavLink
                     caseSensitive
+                    tabIndex={0}
+                    role="link"
                     className={({ isActive }) =>
                       isActive
                         ? "text-[#00c16a] py-2 px-3"
@@ -168,7 +175,7 @@ export const Navigation = ({ data }: { data: any }) => {
                             caseSensitive
                             className={({ isActive }) =>
                               isActive
-                                ? "text-[#00c16a] flex bg-[#1d293d] py-2 px-3"
+                                ? "text-[#00c16a] flex py-2 px-3"
                                 : "text-[#62748e] flex py-2 px-3 transition-colors duration-450 hover:text-[#00c16a]"
                             }
                             to={item.url}
@@ -194,7 +201,7 @@ export const Navigation = ({ data }: { data: any }) => {
                               value={item.id}
                               className={` ${
                                 hasActiveChild
-                                  ? "text-[#00c16a] bg-[#1d293d] py-2 px-3"
+                                  ? "text-[#00c16a] py-2 px-3"
                                   : "text-[#62748e]  py-2 px-3 transition-colors duration-450"
                               }`}
                             >
@@ -204,8 +211,8 @@ export const Navigation = ({ data }: { data: any }) => {
                                   {item.label}
                                 </div>
                               </AccordionTrigger>
-                              <AccordionContent className="bg-[#1d293d]">
-                                <div className="my-3 flex gap-3 flex-col pt-3 border-t">
+                              <AccordionContent className="">
+                                <div className="my-3 flex gap-3 flex-col pt-3">
                                   {item.children.map(
                                     (child: any, index: number) => (
                                       <>
@@ -220,7 +227,7 @@ export const Navigation = ({ data }: { data: any }) => {
                                                   key={index}
                                                   className={({ isActive }) =>
                                                     isActive
-                                                      ? "text-[#00c16a] bg-[#f1f5f9]"
+                                                      ? "text-[#00c16a]"
                                                       : "text-[#62748e]"
                                                   }
                                                   to={item.url + "/" + sub.url}
@@ -282,3 +289,68 @@ function ChevronDownIcon(props: React.ComponentProps<"svg">) {
     </svg>
   );
 }
+
+const triggerClassName =
+  "box-border flex items-center justify-center gap-1.5 h-10 " +
+  "px-2 xs:px-3.5 m-0 rounded-md bg-gray-50 text-gray-900 font-medium " +
+  "text-[0.925rem] xs:text-base leading-6 select-none no-underline " +
+  "hover:bg-gray-100 active:bg-gray-100 data-[popup-open]:bg-gray-100 " +
+  "focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 focus-visible:relative";
+
+const contentClassName =
+  "w-[calc(100vw_-_40px)] h-full p-6 xs:w-max xs:min-w-[400px] xs:w-max " +
+  "transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] " +
+  "data-[starting-style]:opacity-0 data-[ending-style]:opacity-0 " +
+  "data-[starting-style]:data-[activation-direction=left]:translate-x-[-50%] " +
+  "data-[starting-style]:data-[activation-direction=right]:translate-x-[50%] " +
+  "data-[ending-style]:data-[activation-direction=left]:translate-x-[50%] " +
+  "data-[ending-style]:data-[activation-direction=right]:translate-x-[-50%]";
+
+const linkCardClassName =
+  "block rounded-md p-2 xs:p-3 no-underline text-inherit " +
+  "hover:bg-gray-100 focus-visible:relative focus-visible:outline focus-visible:outline-2 " +
+  "focus-visible:-outline-offset-1 focus-visible:outline-blue-800";
+
+const overviewLinks = [
+  {
+    href: "/react/overview/quick-start",
+    title: "Quick Start",
+    description: "Install and assemble your first component.",
+  },
+  {
+    href: "/react/overview/accessibility",
+    title: "Accessibility",
+    description: "Learn how we build accessible components.",
+  },
+  {
+    href: "/react/overview/releases",
+    title: "Releases",
+    description: "See what’s new in the latest Base UI versions.",
+  },
+  {
+    href: "/react/overview/about",
+    title: "About",
+    description: "Learn more about Base UI and our mission.",
+  },
+] as const;
+
+const handbookLinks = [
+  {
+    href: "/react/handbook/styling",
+    title: "Styling",
+    description:
+      "Base UI components can be styled with plain CSS, Tailwind CSS, CSS-in-JS, or CSS Modules.",
+  },
+  {
+    href: "/react/handbook/animation",
+    title: "Animation",
+    description:
+      "Base UI components can be animated with CSS transitions, CSS animations, or JavaScript libraries.",
+  },
+  {
+    href: "/react/handbook/composition",
+    title: "Composition",
+    description:
+      "Base UI components can be replaced and composed with your own existing components.",
+  },
+] as const;
