@@ -18,6 +18,7 @@ import {
   SheetTitle,
 } from "~/components/ui/sheet";
 import { cn } from "~/lib/utils";
+import { NavigationMegaMenu } from "./desktop/navigation-mega-menu";
 
 export const Navigation = ({ data }: { data: any }) => {
   const location = useLocation();
@@ -105,38 +106,7 @@ export const Navigation = ({ data }: { data: any }) => {
                                 <Menu.Arrow className="data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90 data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180">
                                   <ArrowSvg />
                                 </Menu.Arrow>
-                                {item.children.map(
-                                  (child: any, index: number) => (
-                                    <>
-                                      {child.category}
-                                      {child.sub.map(
-                                        (sub: any, index: number) => (
-                                          <>
-                                            {sub.invisible === false && (
-                                              <NavLink
-                                                caseSensitive
-                                                key={index}
-                                                className={({ isActive }) =>
-                                                  isActive
-                                                    ? "app-nav-link text-[#00c16a] bg-[#f1f5f9]"
-                                                    : "app-nav-link text-[#62748e] hover:text-black"
-                                                }
-                                                to={item.url + "/" + sub.url}
-                                              >
-                                                <Menu.Item className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
-                                                  <DynamicIcon
-                                                    iconName={sub.icon}
-                                                  />
-                                                  {sub.label}
-                                                </Menu.Item>
-                                              </NavLink>
-                                            )}
-                                          </>
-                                        )
-                                      )}
-                                    </>
-                                  )
-                                )}
+                                <NavigationMegaMenu items={item} />
                               </Menu.Popup>
                             </Menu.Positioner>
                           </Menu.Portal>
