@@ -9,33 +9,29 @@ export const NavigationMegaMenu = ({ items }: any) => {
     return IconComponent ? <IconComponent /> : null;
   }
 
-  const gridColsClass = `grid-cols-${Math.min(items.children.length, 10)}`;
-
   return (
-    <div className={`grid ${gridColsClass}`}>
+    <div className="py-3 px-5 gap-10 grid grid-flow-col">
       {items.children.map((child: any, index: number) => (
-        <div key={index}>
-          <h6>{child.category}</h6>
+        <div className="flex flex-col gap-2" key={index}>
+          <div className="text-[#6d7682] text-[13px]">{child.category}</div>
           {child.sub.map((sub: any, subIndex: number) => (
-            <>
+            <div key={subIndex}>
               {sub.invisible === false && (
                 <NavLink
                   caseSensitive
                   key={subIndex}
                   className={({ isActive }) =>
-                    isActive
-                      ? "app-nav-link text-[#00c16a] bg-[#f1f5f9]"
-                      : "app-nav-link text-[#62748e] hover:text-black"
+                    isActive ? " text-[#00c16a]" : ""
                   }
                   to={items.url + "/" + sub.url}
                 >
-                  <Menu.Item className="flex items-center gap-1.5 cursor-default py-2 pr-8 pl-4 text-sm leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900">
+                  <Menu.Item className="flex items-center gap-2 py-2">
                     <DynamicIcon iconName={sub.icon} />
                     {sub.label}
                   </Menu.Item>
                 </NavLink>
               )}
-            </>
+            </div>
           ))}
         </div>
       ))}

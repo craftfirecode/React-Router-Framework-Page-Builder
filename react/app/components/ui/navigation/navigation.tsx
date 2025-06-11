@@ -66,7 +66,7 @@ export const Navigation = ({ data }: { data: any }) => {
                     caseSensitive
                     className={({ isActive }) =>
                       isActive
-                        ? "text-[#00c16a] bg-[#1d293d] rounded-md py-2 px-3"
+                        ? "text-[#00c16a] py-2 px-3"
                         : "text-light py-2 px-3 transition-colors duration-450 hover:text-[#00c16a]"
                     }
                     to={item.url}
@@ -89,7 +89,7 @@ export const Navigation = ({ data }: { data: any }) => {
                           <Menu.Trigger
                             className={`flex h-10 items-center justify-center gap-1.5 rounded-md px-3.5 select-none focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100 data-[popup-open]:text-[#00c16a] ${
                               hasActiveChild
-                                ? "text-[#00c16a] bg-[#1d293d]"
+                                ? "text-[#00c16a]"
                                 : "py-2 px-3 transition-colors duration-450"
                             }`}
                           >
@@ -220,8 +220,8 @@ export const Navigation = ({ data }: { data: any }) => {
                                                   key={index}
                                                   className={({ isActive }) =>
                                                     isActive
-                                                      ? "app-nav-link text-[#00c16a] bg-[#f1f5f9]"
-                                                      : "app-nav-link text-[#62748e] hover:text-black"
+                                                      ? "text-[#00c16a] bg-[#f1f5f9]"
+                                                      : "text-[#62748e]"
                                                   }
                                                   to={item.url + "/" + sub.url}
                                                 >
