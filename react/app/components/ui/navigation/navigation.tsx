@@ -1,7 +1,6 @@
 import { Link, NavLink, useLocation } from "react-router";
 import React from "react";
 import { Menu } from "@base-ui-components/react";
-import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
 import * as Icons from "lucide-react";
 import { MenuIcon } from "lucide-react";
 import {
@@ -18,7 +17,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "~/components/ui/sheet";
-import { cn } from "~/lib/utils";
 import { NavigationMegaMenu } from "./desktop/navigation-mega-menu";
 
 export const Navigation = ({ data }: { data: any }) => {

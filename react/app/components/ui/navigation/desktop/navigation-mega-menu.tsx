@@ -26,7 +26,9 @@ export const NavigationMegaMenu = ({ items }: any) => {
     <div className="py-5 px-10 gap-15 grid grid-flow-col">
       {items.children.map((child: any, index: number) => (
         <div className="flex flex-col gap-2" key={index}>
-          <div className="text-[#6d7682] text-[13px]">{child.category}</div>
+          <div className="text-[#6d7682] text-[13px] font-semibold">
+            {child.category}
+          </div>
           {child.sub.map((sub: any, subIndex: number) => (
             <div key={subIndex}>
               {sub.invisible === false && (
@@ -57,11 +59,13 @@ export const NavigationMegaMenu = ({ items }: any) => {
         </div>
       ))}
       <div>
-        <img
-          title="cta"
-          src={import.meta.env.VITE_PUBLIC_STRAPI_API_URL + items.cta.url}
-          className="w-full h-full object-cover object-top rounded-lg"
-        />
+        {items.cta && (
+          <img
+            title="cta"
+            src={import.meta.env.VITE_PUBLIC_STRAPI_API_URL + items.cta.url}
+            className="w-full h-full object-cover object-top rounded-lg"
+          />
+        )}
       </div>
     </div>
   );
