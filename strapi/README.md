@@ -59,3 +59,7 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 ---
 
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+
+---
+
+`ssh` pm2 start npm --name techhub -- run start
