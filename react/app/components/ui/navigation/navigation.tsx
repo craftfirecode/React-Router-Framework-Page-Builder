@@ -171,6 +171,7 @@ export const Navigation = ({ data }: { data: any }) => {
                           <NavLink
                             onClick={() => setOpen(false)}
                             caseSensitive
+                            role="link"
                             className={({ isActive }) =>
                               isActive
                                 ? "text-[#00c16a] flex py-2 px-3"
@@ -222,6 +223,7 @@ export const Navigation = ({ data }: { data: any }) => {
                                             <>
                                               {sub.invisible === false && (
                                                 <NavLink
+                                                  role="link"
                                                   onClick={() => setOpen(false)}
                                                   caseSensitive
                                                   key={index}
