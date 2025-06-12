@@ -156,14 +156,14 @@ export const Navigation = ({ data }: { data: any }) => {
         </div>
         <Sheet open={open}>
           <SheetContent
-            className="bg-white"
+            className="bg-white overflow-auto h-screen"
             onPointerDownOutside={() => setOpen(false)}
           >
             <SheetHeader>
               <SheetDescription>CraftFire</SheetDescription>
             </SheetHeader>
             <Accordion type="single" collapsible>
-              <div className="overflow-auto h-[calc(100vh-100px)]">
+              <div className="">
                 {data.map((item: any, index: number) => (
                   <div className="" key={item.id}>
                     {item.children.length === 0 ? (
@@ -199,20 +199,20 @@ export const Navigation = ({ data }: { data: any }) => {
                           return (
                             <AccordionItem
                               value={item.id}
-                              className={` ${
+                              className={`${
                                 hasActiveChild
                                   ? "text-[#00c16a] py-2 px-3"
                                   : "text-black  py-2 px-3 transition-colors duration-450"
                               }`}
                             >
-                              <AccordionTrigger className="p-0 m-0">
+                              <AccordionTrigger className="p-0 m-0 small-menu">
                                 <div className="flex items-center gap-1.5 text-[19px] font-normal">
                                   <DynamicIcon iconName={item.icon} />
                                   {item.label}
                                 </div>
                               </AccordionTrigger>
-                              <AccordionContent className="">
-                                <div className="my-3 flex gap-3 flex-col pt-3">
+                              <AccordionContent className="pt-0 pb-0">
+                                <div className="flex gap-3 flex-col pt-3">
                                   {item.children.map(
                                     (child: any, index: number) => (
                                       <>

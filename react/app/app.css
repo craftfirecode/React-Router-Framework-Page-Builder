@@ -156,7 +156,7 @@ a:hover {
     color: #00c16a;
 }
 
-[role="link"]:focus-visible {
+[role="link"]:focus-visible, .small-menu:focus, .small-menu:focus-visible, .small-menu:focus-within {
     border: none;
     outline-offset: none !important;
     outline: none !important;
