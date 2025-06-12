@@ -162,7 +162,7 @@ export const Navigation = ({ data }: { data: any }) => {
               <SheetDescription>CraftFire</SheetDescription>
             </SheetHeader>
             <Accordion type="single" collapsible>
-              <div className="overflow-auto h-[calc(100vh-10px)]">
+              <div className="overflow-auto h-[calc(100vh-50px)]">
                 {data.map((item: any, index: number) => (
                   <div className="" key={item.id}>
                     {item.children.length === 0 ? (
