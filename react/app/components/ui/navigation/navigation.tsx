@@ -40,7 +40,7 @@ export const Navigation = ({ data }: { data: any }) => {
     <>
       <nav className="container hidden mx-auto md:flex items-center gap-2 pt-5">
         <Link to="/" aria-label="Home">
-          <div className="me-3">
+          <div className="me-3 flex items-center gap-2 text-light font-bold text-[16px]">
             <svg
               className="brand"
               width="75"
@@ -58,6 +58,7 @@ export const Navigation = ({ data }: { data: any }) => {
                 fill="#ED9614"
               />
             </svg>
+            <div>CraftFire</div>
           </div>
         </Link>
         {data.map((item: any) => (
