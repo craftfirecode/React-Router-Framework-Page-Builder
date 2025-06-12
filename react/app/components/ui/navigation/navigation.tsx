@@ -159,11 +159,10 @@ export const Navigation = ({ data }: { data: any }) => {
             onPointerDownOutside={() => setOpen(false)}
           >
             <SheetHeader>
-              <SheetTitle>CRAFTFIRE</SheetTitle>
-              <SheetDescription></SheetDescription>
+              <SheetDescription>CraftFire</SheetDescription>
             </SheetHeader>
             <Accordion type="single" collapsible>
-              <div className="">
+              <div className="overflow-auto h-[calc(100vh-10px)]">
                 {data.map((item: any, index: number) => (
                   <div className="" key={item.id}>
                     {item.children.length === 0 ? (
@@ -175,11 +174,11 @@ export const Navigation = ({ data }: { data: any }) => {
                             className={({ isActive }) =>
                               isActive
                                 ? "text-[#00c16a] flex py-2 px-3"
-                                : "text-[#62748e] flex py-2 px-3 transition-colors duration-450 hover:text-[#00c16a]"
+                                : "text-dark flex py-2 px-3 transition-colors duration-450 hover:text-[#00c16a]"
                             }
                             to={item.url}
                           >
-                            <div className="flex items-center gap-1.5">
+                            <div className="flex items-center gap-1.5 text-[19px]">
                               <DynamicIcon iconName={item.icon} />
                               {item.label}
                             </div>
@@ -201,11 +200,11 @@ export const Navigation = ({ data }: { data: any }) => {
                               className={` ${
                                 hasActiveChild
                                   ? "text-[#00c16a] py-2 px-3"
-                                  : "text-[#62748e]  py-2 px-3 transition-colors duration-450"
+                                  : "text-black  py-2 px-3 transition-colors duration-450"
                               }`}
                             >
                               <AccordionTrigger className="p-0 m-0">
-                                <div className="flex items-center gap-1.5">
+                                <div className="flex items-center gap-1.5 text-[19px] font-normal">
                                   <DynamicIcon iconName={item.icon} />
                                   {item.label}
                                 </div>
@@ -215,7 +214,9 @@ export const Navigation = ({ data }: { data: any }) => {
                                   {item.children.map(
                                     (child: any, index: number) => (
                                       <>
-                                        <h6>{child.category}</h6>
+                                        <div className="text-[#6d7682] text-[13px] font-semibold">
+                                          {child.category}
+                                        </div>
                                         {child.sub.map(
                                           (sub: any, index: number) => (
                                             <>
@@ -227,14 +228,16 @@ export const Navigation = ({ data }: { data: any }) => {
                                                   className={({ isActive }) =>
                                                     isActive
                                                       ? "text-[#00c16a]"
-                                                      : "text-[#62748e]"
+                                                      : "text-black"
                                                   }
                                                   to={item.url + "/" + sub.url}
                                                 >
-                                                  <DynamicIcon
-                                                    iconName={sub.icon}
-                                                  />
-                                                  {sub.label}
+                                                  <div className="flex items-center gap-1.5 py-2">
+                                                    <DynamicIcon
+                                                      iconName={sub.icon}
+                                                    />
+                                                    {sub.label}
+                                                  </div>
                                                 </NavLink>
                                               )}
                                             </>
@@ -288,68 +291,3 @@ function ChevronDownIcon(props: React.ComponentProps<"svg">) {
     </svg>
   );
 }
-
-const triggerClassName =
-  "box-border flex items-center justify-center gap-1.5 h-10 " +
-  "px-2 xs:px-3.5 m-0 rounded-md bg-gray-50 text-gray-900 font-medium " +
-  "text-[0.925rem] xs:text-base leading-6 select-none no-underline " +
-  "hover:bg-gray-100 active:bg-gray-100 data-[popup-open]:bg-gray-100 " +
-  "focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 focus-visible:relative";
-
-const contentClassName =
-  "w-[calc(100vw_-_40px)] h-full p-6 xs:w-max xs:min-w-[400px] xs:w-max " +
-  "transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] " +
-  "data-[starting-style]:opacity-0 data-[ending-style]:opacity-0 " +
-  "data-[starting-style]:data-[activation-direction=left]:translate-x-[-50%] " +
-  "data-[starting-style]:data-[activation-direction=right]:translate-x-[50%] " +
-  "data-[ending-style]:data-[activation-direction=left]:translate-x-[50%] " +
-  "data-[ending-style]:data-[activation-direction=right]:translate-x-[-50%]";
-
-const linkCardClassName =
-  "block rounded-md p-2 xs:p-3 no-underline text-inherit " +
-  "hover:bg-gray-100 focus-visible:relative focus-visible:outline focus-visible:outline-2 " +
-  "focus-visible:-outline-offset-1 focus-visible:outline-blue-800";
-
-const overviewLinks = [
-  {
-    href: "/react/overview/quick-start",
-    title: "Quick Start",
-    description: "Install and assemble your first component.",
-  },
-  {
-    href: "/react/overview/accessibility",
-    title: "Accessibility",
-    description: "Learn how we build accessible components.",
-  },
-  {
-    href: "/react/overview/releases",
-    title: "Releases",
-    description: "See what’s new in the latest Base UI versions.",
-  },
-  {
-    href: "/react/overview/about",
-    title: "About",
-    description: "Learn more about Base UI and our mission.",
-  },
-] as const;
-
-const handbookLinks = [
-  {
-    href: "/react/handbook/styling",
-    title: "Styling",
-    description:
-      "Base UI components can be styled with plain CSS, Tailwind CSS, CSS-in-JS, or CSS Modules.",
-  },
-  {
-    href: "/react/handbook/animation",
-    title: "Animation",
-    description:
-      "Base UI components can be animated with CSS transitions, CSS animations, or JavaScript libraries.",
-  },
-  {
-    href: "/react/handbook/composition",
-    title: "Composition",
-    description:
-      "Base UI components can be replaced and composed with your own existing components.",
-  },
-] as const;
