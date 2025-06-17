@@ -50,7 +50,6 @@ function Button({
   return (
     <Comp
       data-slot="button"
-      target="_blank"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
