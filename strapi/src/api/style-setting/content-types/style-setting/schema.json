@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "style_settings",
+  "info": {
+    "singularName": "style-setting",
+    "pluralName": "style-settings",
+    "displayName": "Style Settings",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "btn_background": {
+      "type": "string"
+    },
+    "btn_color": {
+      "type": "string"
+    },
+    "body_background": {
+      "type": "string"
+    }
+  }
+}
