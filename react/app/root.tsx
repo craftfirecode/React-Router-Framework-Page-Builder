@@ -36,28 +36,11 @@ export async function loader() {
   }
 }
 
-const PageFadeStyles = () => (
-  <style
-    dangerouslySetInnerHTML={{
-      __html: `
-      body {
-        opacity: 0;
-        transition: opacity 0.5s ease;
-      }
-      body.page-loaded {
-        opacity: 1;
-      }
-    `,
-    }}
-  />
-);
-
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const loaderData: any = useLoaderData<Route.ComponentProps>();
   const isPortfolioPage = /^\/portfolio(\/|$)/.test(location.pathname);
   const isBlogPage = /^\/blog(\/|$)/.test(location.pathname);
-  const [stylesLoaded, setStylesLoaded] = useState(false);
 
   useEffect(() => {
     const checkCookieConsent = () => {
@@ -76,30 +59,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (loaderData?.styles) {
       const root = document.documentElement;
-      root.style.setProperty(
-        "--html-bg",
-        loaderData.styles.body_background || "#000"
-      );
+      root.style.setProperty("--html-bg", loaderData.styles.body_background);
       root.style.setProperty(
         "--btn-default-bg",
-        loaderData.styles.btn_background || "#e5e5e5"
+        loaderData.styles.btn_background
       );
 
       root.style.setProperty(
         "--btn-default-color",
-        loaderData.styles.btn_color || "#000"
+        loaderData.styles.btn_color
       );
-
-      // Short delay to ensure styles are applied before showing content
-      setTimeout(() => {
-        document.body.classList.add("styles-loaded");
-        setStylesLoaded(true);
-      }, 50);
     }
-
-    setTimeout(() => {
-      document.body.classList.add("page-loaded");
-    }, 100);
   }, [loaderData]);
 
   const onAccept = (preferences: {}) => {
@@ -114,7 +84,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        <PageFadeStyles />
       </head>
       <body className="dark h-[100vh]">
         <div className="flex flex-col h-[100vh]">
