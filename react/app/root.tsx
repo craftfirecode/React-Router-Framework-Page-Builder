@@ -78,10 +78,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (loaderData?.styles) {
       const root = document.documentElement;
-      console.log(loaderData.styles.body_background);
       root.style.setProperty(
         "--html-bg",
         loaderData.styles.body_background || "#000"
+      );
+      root.style.setProperty(
+        "--btn-default-bg",
+        loaderData.styles.btn_background || "#e5e5e5"
+      );
+
+      root.style.setProperty(
+        "--btn-default-color",
+        loaderData.styles.btn_color || "#000"
       );
 
       // Short delay to ensure styles are applied before showing content
