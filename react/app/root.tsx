@@ -36,18 +36,16 @@ export async function loader() {
   }
 }
 
-// Inline style to prevent flash of white
-const InitialStyles = () => (
+const PageFadeStyles = () => (
   <style
     dangerouslySetInnerHTML={{
       __html: `
-      html, body {
-        background-color: var(--html-bg, #000);
-        visibility: hidden;
+      body {
+        opacity: 0;
+        transition: opacity 0.5s ease;
       }
-      .styles-loaded {
-        visibility: visible;
-        transition: visibility 0s;
+      body.page-loaded {
+        opacity: 1;
       }
     `,
     }}
@@ -98,6 +96,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         setStylesLoaded(true);
       }, 50);
     }
+
+    setTimeout(() => {
+      document.body.classList.add("page-loaded");
+    }, 100);
   }, [loaderData]);
 
   const onAccept = (preferences: {}) => {
@@ -112,7 +114,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        <InitialStyles />
+        <PageFadeStyles />
       </head>
       <body className="dark h-[100vh]">
         <div className="flex flex-col h-[100vh]">
