@@ -42,38 +42,31 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const isPortfolioPage = /^\/portfolio(\/|$)/.test(location.pathname);
   const isBlogPage = /^\/blog(\/|$)/.test(location.pathname);
 
+  // Generate inline CSS for initial styles
+  const initialStyles = loaderData?.styles
+    ? `
+      :root {
+        --html-bg: ${loaderData.styles.body_background};
+        --btn-default-bg: ${loaderData.styles.btn_background};
+        --btn-default-color: ${loaderData.styles.btn_color};
+      }
+    `
+    : "";
+
   useEffect(() => {
     const checkCookieConsent = () => {
       const consent = localStorage.getItem("cookieConsent");
       if (!consent) {
         // Handle case where there is no consent
-        // console.log("No cookie consent found");
       } else {
         // Handle case where consent is found
-        // console.log("Cookie consent found:", JSON.parse(consent));
       }
     };
     checkCookieConsent();
   }, [location]);
 
-  useEffect(() => {
-    if (loaderData?.styles) {
-      const root = document.documentElement;
-      root.style.setProperty("--html-bg", loaderData.styles.body_background);
-      root.style.setProperty(
-        "--btn-default-bg",
-        loaderData.styles.btn_background
-      );
-
-      root.style.setProperty(
-        "--btn-default-color",
-        loaderData.styles.btn_color
-      );
-    }
-  }, [loaderData]);
-
   const onAccept = (preferences: {}) => {
-    //console.log("preferences", preferences);
+    // Handle preferences
   };
 
   return (
@@ -84,6 +77,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        {/* Inline styles for initial CSS variables */}
+        <style>{initialStyles}</style>
       </head>
       <body className="dark h-[100vh]">
         <div className="flex flex-col h-[100vh]">
