@@ -47,8 +47,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
     ? `
       :root {
         --html-bg: ${loaderData.styles.body_background};
-        --btn-default-bg: ${loaderData.styles.btn_background};
-        --btn-default-color: ${loaderData.styles.btn_color};
+        --btn-default-bg: ${loaderData.styles.btn_default_background};
+        --btn-default-color: ${loaderData.styles.btn_default_color};
+        --btn-hover-default-bg: ${loaderData.styles.hover_btn_default_background};
+        --btn-hover-default-color: ${loaderData.styles.hover_btn_default_color};
       }
     `
     : "";

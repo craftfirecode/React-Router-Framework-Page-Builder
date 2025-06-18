@@ -546,11 +546,13 @@ export interface ApiStyleSettingStyleSetting extends Struct.SingleTypeSchema {
   };
   attributes: {
     body_background: Schema.Attribute.String;
-    btn_background: Schema.Attribute.String;
-    btn_color: Schema.Attribute.String;
+    btn_default_background: Schema.Attribute.String;
+    btn_default_color: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    hover_btn_default_background: Schema.Attribute.String;
+    hover_btn_default_color: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

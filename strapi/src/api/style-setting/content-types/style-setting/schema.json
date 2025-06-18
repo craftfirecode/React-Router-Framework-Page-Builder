@@ -11,13 +11,19 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "btn_background": {
+    "btn_default_background": {
       "type": "string"
     },
-    "btn_color": {
+    "btn_default_color": {
       "type": "string"
     },
     "body_background": {
+      "type": "string"
+    },
+    "hover_btn_default_background": {
+      "type": "string"
+    },
+    "hover_btn_default_color": {
       "type": "string"
     }
   }
