@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense } from "react";
+import React, { useEffect, Suspense, useState } from "react";
 import {
   isRouteErrorResponse,
   Links,
@@ -36,11 +36,30 @@ export async function loader() {
   }
 }
 
+// Inline style to prevent flash of white
+const InitialStyles = () => (
+  <style
+    dangerouslySetInnerHTML={{
+      __html: `
+      html, body {
+        background-color: var(--html-bg, #000);
+        visibility: hidden;
+      }
+      .styles-loaded {
+        visibility: visible;
+        transition: visibility 0s;
+      }
+    `,
+    }}
+  />
+);
+
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const loaderData: any = useLoaderData<Route.ComponentProps>();
   const isPortfolioPage = /^\/portfolio(\/|$)/.test(location.pathname);
   const isBlogPage = /^\/blog(\/|$)/.test(location.pathname);
+  const [stylesLoaded, setStylesLoaded] = useState(false);
 
   useEffect(() => {
     const checkCookieConsent = () => {
@@ -64,6 +83,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         "--html-bg",
         loaderData.styles.body_background || "#000"
       );
+
+      // Short delay to ensure styles are applied before showing content
+      setTimeout(() => {
+        document.body.classList.add("styles-loaded");
+        setStylesLoaded(true);
+      }, 50);
     }
   }, [loaderData]);
 
@@ -79,6 +104,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <InitialStyles />
       </head>
       <body className="dark h-[100vh]">
         <div className="flex flex-col h-[100vh]">
